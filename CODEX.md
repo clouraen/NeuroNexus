@@ -1,358 +1,360 @@
-# NeuroNexus - Codex de Desenvolvimento
+# NeuroNexus - Development Codex
 
-## Visão Geral
-NeuroNexus é uma plataforma educacional multiplataforma (web, desktop, mobile) construída com Rust e Dioxus, focada em preparação para vestibulares e ENEM. A plataforma combina IA generativa, trilhas de aprendizado personalizadas e uma interface imersiva com estética cyberpunk (inspirada em Cyberpunk 2077 e Blade Runner 2049).
+> 🌐 **[Português](docs/pt/CODEX.md)** | **[中文](docs/zh/CODEX.md)**
+
+## Overview
+NeuroNexus is a multi-platform (web, desktop, mobile) educational platform built with Rust and Dioxus, focused on preparing for college entrance exams and ENEM. The platform combines generative AI, personalized learning paths, and an immersive cyberpunk-inspired interface (inspired by Cyberpunk 2077 and Blade Runner 2049).
 
 ## Design System: Neon Cyberpunk
-### Estética Visual
-- **Tema Base**: Dark mode com gradientes escuros profundos
-- **Cores Principais**:
-  - Fundo: `#000000` (preto absoluto) e `#0a0a0a` (preto suave)
-  - Neon Roxo: `#9d4edd`, `#c77dff`, `#e0aaff`
-  - Neon Rosa: `#ff69b4`, `#ff10f0`, `#ff00ff`
-  - Neon Azul: `#00ffff`, `#0ff0ff`, `#00d9ff`
-  - Acentos Dourados: `#ffd700`, `#ffed4e`
-  - Glow Effects: Sombras brilhantes com blur para efeito neon
+### Visual Design
+- **Base Theme**: Dark mode with deep dark gradients
+- **Primary Colors**:
+  - Background: `#000000` (absolute black) and `#0a0a0a` (soft black)
+  - Neon Purple: `#9d4edd`, `#c77dff`, `#e0aaff`
+  - Neon Pink: `#ff69b4`, `#ff10f0`, `#ff00ff`
+  - Neon Blue: `#00ffff`, `#0ff0ff`, `#00d9ff`
+  - Gold Accents: `#ffd700`, `#ffed4e`
+  - Glow Effects: Bright shadows with blur for neon effect
 
-### Componentes UI Dioxus
-- **NeonButton**: Botões com bordas neon e glow hover
-- **NeonInput**: Inputs com bordas pulsantes e glow
-- **CyberCard**: Cards com gradientes escuros e bordas neon
-- **StatusBar**: Barra superior com hora e indicadores (estilo cyberpunk)
-- **TabBar**: Navegação inferior com ícones neon
-- **GlitchText**: Textos com efeito glitch/scanline (opcional)
-- **HologramEffect**: Efeitos holográficos para elementos importantes
-- **NeonProgressBar**: Barras de progresso com animação neon
+### Dioxus UI Components
+- **NeonButton**: Buttons with neon borders and glow hover
+- **NeonInput**: Inputs with pulsating borders and glow
+- **CyberCard**: Cards with dark gradients and neon borders
+- **StatusBar**: Top bar with time and indicators (cyberpunk style)
+- **TabBar**: Bottom navigation with neon icons
+- **GlitchText**: Text with glitch/scanline effect (optional)
+- **HologramEffect**: Holographic effects for important elements
+- **NeonProgressBar**: Progress bars with neon animation
 
-### Tipografia
-- **Fontes**: Sans-serif modernas, preferencialmente monospace para elementos técnicos
-- **Hierarquia**: Títulos em CAPS LOCK com glow, corpo de texto legível
-- **Efeitos**: Text-shadow neon, tracking aumentado para títulos
+### Typography
+- **Fonts**: Modern sans-serif, preferably monospace for technical elements
+- **Hierarchy**: Titles in CAPS LOCK with glow, readable body text
+- **Effects**: Neon text-shadow, increased tracking for titles
 
-### Ícone do Aplicativo
-- **Ícone**: Representação cyberpunk de martelo e foice sobre capelo de formatura e livros
-- **Cores do Ícone**:
-  - Martelo e Foice: Vermelho neon (`#ff0000`) com outline azul neon (`#00ffff`)
-  - Capelo de Formatura: Azul escuro (`#000080`) com outline cyan neon (`#00ffff`)
-  - Livros: Azul escuro (`#000080`) com outline cyan neon (`#00ffff`)
-  - Fundo: Preto absoluto (`#000000`)
-- **Estilo**: Estética cyberpunk neon com glow effects
-- **Localização**: `assets/icon.png`, `assets/icon.ico` (Windows), `assets/icon.icns` (macOS), `assets/icon.png` (Android/iOS)
+### Application Icon
+- **Icon**: Cyberpunk representation of hammer and scythe over graduation cap and books
+- **Icon Colors**:
+  - Hammer and Scythe: Red neon (`#ff0000`) with blue neon outline (`#00ffff`)
+  - Graduation Cap: Dark blue (`#000080`) with cyan neon outline (`#00ffff`)
+  - Books: Dark blue (`#000080`) with cyan neon outline (`#00ffff`)
+  - Background: Absolute black (`#000000`)
+- **Style**: Neon cyberpunk aesthetic with glow effects
+- **Location**: `assets/icon.png`, `assets/icon.ico` (Windows), `assets/icon.icns` (macOS), `assets/icon.png` (Android/iOS)
 
-## Arquitetura Técnica
+## Technical Architecture
 
-### Stack Tecnológico
-- **Linguagem**: Rust (edition 2021, mínimo 1.75)
-- **Framework UI**: Dioxus 0.4+
-- **Arquitetura**: Clean Architecture (Domínio → Dados → Apresentação)
-- **Estrutura**: Workspace com múltiplos crates
+### Technology Stack
+- **Language**: Rust (edition 2021, minimum 1.75)
+- **UI Framework**: Dioxus 0.4+
+- **Architecture**: Clean Architecture (Domain → Data → Presentation)
+- **Structure**: Workspace with multiple crates
 
-### Estrutura de Crates
+### Crate Structure
 ```
 crates/
-├── domain/          # Lógica de negócio pura, modelos, casos de uso, traits
-├── data/            # Implementações de repositórios, banco de dados, seeders
-├── app/             # Componentes Dioxus, páginas, roteamento, UI
-├── shared/          # Utilitários compartilhados, tipos comuns
-└── services/        # Serviços externos (IA, API, etc.)
+├── domain/          # Pure business logic, models, use cases, traits
+├── data/            # Repository implementations, database, seeders
+├── app/             # Dioxus components, pages, routing, UI
+├── shared/          # Shared utilities, common types
+└── services/        # External services (AI, API, etc.)
 ```
 
-### Targets de Compilação
+### Compilation Targets
 - **Web**: `wasm32-unknown-unknown` (Dioxus Web)
 - **Desktop**: Wry renderer (WebView)
-- **Mobile**: Plataforma específica (Tauri mobile)
+- **Mobile**: Platform-specific (Tauri mobile)
 
-## Fases de Implementação
+## Implementation Phases
 
-### FASE 1: Core MVP (Fundação)
-#### Objetivo
-Estabelecer arquitetura base e funcionalidades essenciais de navegação e exibição.
+### PHASE 1: Core MVP (Foundation)
+#### Objective
+Establish base architecture and essential navigation and display functionalities.
 
-#### Features Core
-1. **Sistema de Navegação**
-   - TabBar inferior com 4 abas: Plano, Perguntas, Redações, Perfil
-   - Roteamento básico entre páginas
-   - StatusBar superior com hora e indicador online
+#### Core Features
+1. **Navigation System**
+   - Bottom TabBar with 4 tabs: Plan, Questions, Essays, Profile
+   - Basic routing between pages
+   - Top StatusBar with time and online indicator
 
-2. **Plano de Estudo (Home)**
-   - Dashboard com categorias de assuntos
-   - Cards de acesso rápido
-   - Estatísticas básicas (total de redações, questões respondidas)
-   - Tema cyberpunk aplicado
+2. **Study Plan (Home)**
+   - Dashboard with subject categories
+   - Quick access cards
+   - Basic statistics (total essays, questions answered)
+   - Cyberpunk theme applied
 
-3. **Listagem de Questões**
-   - Visualização de questões por categoria
-   - Busca simples por palavras-chave
-   - Filtros básicos (assunto, dificuldade)
-   - Card de questão com preview
+3. **Question Listing**
+   - Viewing questions by category
+   - Simple keyword search
+   - Basic filters (subject, difficulty)
+   - Question card with preview
 
-4. **Listagem de Redações**
-   - Lista de redações do usuário
-   - Status: Em Progresso / Corrigida
-   - Filtro por status
-   - Card de redação com título e score
+4. **Essay Listing**
+   - List of user essays
+   - Status: In Progress / Corrected
+   - Filter by status
+   - Essay card with title and score
 
-5. **Perfil Básico**
-   - Nome e avatar do usuário
-   - Informações básicas
-   - Configurações simples
+5. **Basic Profile**
+   - User name and avatar
+   - Basic information
+   - Simple settings
 
-#### Implementação Fase 1
+#### Phase 1 Implementation
 ```
-1. Setup do workspace Rust com crates
-2. Configurar Dioxus para web/desktop/mobile
-3. Criar estrutura básica de camadas (domain, data, app)
-4. Implementar roteamento básico
-5. Criar componentes UI base (NeonButton, NeonInput, CyberCard, TabBar, StatusBar)
-6. Implementar tema cyberpunk (cores, efeitos, tipografia)
-7. Páginas: Home, Questões (lista), Redações (lista), Perfil (básico)
-8. Repositórios em memória para desenvolvimento
-9. Seeders de dados de teste
+1. Setup Rust workspace with crates
+2. Configure Dioxus for web/desktop/mobile
+3. Create basic layer structure (domain, data, app)
+4. Implement basic routing
+5. Create base UI components (NeonButton, NeonInput, CyberCard, TabBar, StatusBar)
+6. Implement cyberpunk theme (colors, effects, typography)
+7. Pages: Home, Questions (list), Essays (list), Profile (basic)
+8. In-memory repositories for development
+9. Data test seeders
 ```
 
-### FASE 2: Funcionalidades Educacionais Essenciais
-#### Objetivo
-Implementar as funcionalidades principais de aprendizado e avaliação.
+### PHASE 2: Essential Educational Features
+#### Objective
+Implement main learning and evaluation functionalities.
 
-#### Features Fase 2
+#### Features Phase 2
 
-1. **Gerenciamento de Redações Completo**
-   - Criar nova redação (editor de texto)
-   - Selecionar tipo de vestibular/universidade (ENEM, USP, UNICAMP, etc.)
-   - Correção específica por formato de prova
-   - Salvar rascunho
-   - Enviar para avaliação
-   - Visualizar feedback detalhado baseado nos critérios do vestibular
-   - Score com destaque (0-1000 para ENEM, 0-48 para Fuvest/USP, etc.)
-   - Histórico completo com datas formatadas
-   - Filtrar redações por vestibular
+1. **Complete Essay Management**
+   - Create new essay (text editor)
+   - Select exam type/university (ENEM, USP, UNICAMP, etc.)
+   - Specific correction by exam format
+   - Save draft
+   - Submit for evaluation
+   - View detailed feedback based on exam criteria
+   - Score with highlight (0-1000 for ENEM, 0-48 for Fuvest/USP, etc.)
+   - Complete history with formatted dates
+   - Filter essays by exam type
 
-2. **Sistema de Questões Detalhado**
-   - Visualizar questão completa
-   - Alternativas de resposta
-   - Resolução explicada
-   - Marcar como respondida
-   - Navegação entre questões
+2. **Detailed Question System**
+   - View full question
+   - Answer alternatives
+   - Explained resolution
+   - Mark as answered
+   - Navigate between questions
 
-3. **Trilhas de Conhecimento**
-   - Lista de trilhas disponíveis
-   - Visualizar detalhes da trilha
-   - Rastreamento de progresso (porcentagem)
-   - Iniciar/continuar trilha
-   - Áreas de foco por trilha
+3. **Knowledge Trails**
+   - List of available trails
+   - View trail details
+   - Progress tracking (percentage)
+   - Start/continue trail
+   - Focus areas by trail
 
-4. **Sistema de Progresso Básico**
-   - Rastrear questões respondidas
-   - Rastrear redações enviadas
-   - Calcular progresso por categoria
-   - Exibir métricas no dashboard
+4. **Basic Progress System**
+   - Track answered questions
+   - Track submitted essays
+   - Calculate progress by category
+   - Display metrics on dashboard
 
-#### Implementação Fase 2
+#### Phase 2 Implementation
 ```
-1. Implementar enum ExamType com todos os vestibulares suportados
-2. Casos de uso de domínio para redações:
-   - CreateEssay (com ExamType), SaveEssayDraft, SubmitEssayForEvaluation, GetEssayFeedback
+1. Implement ExamType enum with all supported exams
+2. Domain use cases for essays:
+   - CreateEssay (with ExamType), SaveEssayDraft, SubmitEssayForEvaluation, GetEssayFeedback
    - ListEssaysByExamType, GetExamRubric
 
-3. Casos de uso de domínio para questões:
+3. Domain use cases for questions:
    - GetQuestionDetails, MarkQuestionAsAnswered, GetQuestionExplanation
 
-4. Casos de uso de domínio para trilhas:
+4. Domain use cases for trails:
    - StartKnowledgeTrail, UpdateTrailProgress, GetTrailDetails
 
-5. Implementar editor de redação (textarea com estilização cyberpunk)
-6. Componente de seleção de vestibular (dropdown/selector cyberpunk)
-7. Implementar modelo ExamRubric e RubricScores
-8. Criar repositório ExamRubricRepository
-9. Implementar rubricas base para ENEM, Fuvest, UNICAMP, UNESP, UERJ
-10. Página de detalhes de questão
-11. Página de detalhes de trilha
-12. Serviço mock de avaliação de redação (simular IA com critérios específicos)
-13. Exibir scores no formato correto conforme ExamType
-14. Filtrar redações por tipo de vestibular na UI
-15. Atualizar UI com animações neon
+5. Implement essay editor (textarea with cyberpunk styling)
+6. Exam type selection component (cyberpunk dropdown/selector)
+7. Implement ExamRubric and RubricScores models
+8. Create ExamRubricRepository
+9. Implement base rubrics for ENEM, Fuvest, UNICAMP, UNESP, UERJ
+10. Question details page
+11. Trail details page
+12. Mock essay evaluation service (simulate AI with specific criteria)
+13. Display scores in correct format per ExamType
+14. Filter essays by exam type in UI
+15. Update UI with neon animations
 ```
 
-### FASE 3: IA e Personalização
-#### Objetivo
-Adicionar inteligência artificial e personalização do aprendizado.
+### PHASE 3: AI and Personalization
+#### Objective
+Add artificial intelligence and personalized learning.
 
-#### Features Fase 3
+#### Features Phase 3
 
-1. **Chat Tutor com IA**
-   - Chat em tempo real com tutor IA
-   - Respostas contextualizadas
-   - Suporte por assunto
-   - Histórico de conversas
-   - Interface chat cyberpunk (mensagens com glow)
+1. **AI Tutor Chat**
+   - Real-time chat with AI tutor
+   - Contextualized responses
+   - Subject support
+   - Conversation history
+   - Cyberpunk chat interface (messages with glow)
 
-2. **Avaliação de Redação com IA**
-   - Análise detalhada por competências específicas de cada vestibular
-   - Correção baseada nos critérios oficiais de cada exame
-   - Sugestões de melhoria específicas por tipo de prova
-   - Highlight de erros/oportunidades
-   - Feedback construtivo adaptado ao formato do vestibular
-   - Comparação com médias históricas do exame específico
+2. **Essay Evaluation with AI**
+   - Detailed analysis by specific competencies of each exam
+   - Correction based on official criteria of each exam
+   - Specific improvement suggestions by exam type
+   - Highlight errors/opportunities
+   - Constructive feedback adapted to exam format
+   - Comparison with historical averages of the specific exam
 
-3. **Trilhas Personalizadas**
-   - Geração de trilhas baseadas no desempenho
-   - Recomendações de conteúdo
-   - Adaptação de dificuldade
+3. **Personalized Trails**
+   - Trail generation based on performance
+   - Content recommendations
+   - Difficulty adaptation
 
-4. **Sistema de Conquistas**
-   - Badges e conquistas
-   - Notificações de conquistas desbloqueadas
-   - Visualização de conquistas no perfil
-   - Animações de desbloqueio
+4. **Achievement System**
+   - Badges and achievements
+   - Achievement unlock notifications
+   - Achievement view in profile
+   - Unlock animations
 
-#### Implementação Fase 3
+#### Phase 3 Implementation
 ```
-1. Integração com Hugging Face Hub para download de modelos LLM
-2. Sistema de download e gestão de modelos LLM (dlite-v2-1.5B)
-3. Interface de download na primeira execução
-4. Serviço de inferência local usando Candle (dlite-v2-1.5B)
-5. Otimizações de quantização para mobile (INT8/INT4)
-6. Serviço P2P de LLM para compartilhamento de capacidade
-7. Integração com chat tutor
-8. Integração com avaliação de redação
-9. Sistema de cache de inferências
-10. Implementar rubricas de avaliação para cada ExamType
-11. Sistema de correção adaptativo por tipo de vestibular
-12. Banco de dados de critérios oficiais de cada exame
-13. Sistema de recomendação básico
-14. Sistema de conquistas (domínio + UI)
-15. Notificações toast com estilo cyberpunk
-16. Animações de desbloqueio
+1. Hugging Face Hub integration for LLM model downloads
+2. LLM model download and management system (dlite-v2-1.5B)
+3. Download interface on first execution
+4. Local inference service using Candle (dlite-v2-1.5B)
+5. Quantization optimizations for mobile (INT8/INT4)
+6. P2P LLM service for sharing capacity
+7. Tutor chat integration
+8. Essay evaluation integration
+9. Inference caching system
+10. Implement assessment rubrics for each ExamType
+11. Adaptive correction system by exam type
+12. Database of official criteria for each exam
+13. Basic recommendation system
+14. Achievement system (domain + UI)
+15. Cyberpunk-style toast notifications
+16. Unlock animations
 ```
 
-### FASE 4: Features Avançadas
-#### Objetivo
-Expandir funcionalidades com ferramentas de estudo adicionais.
+### PHASE 4: Advanced Features
+#### Objective
+Expand functionalities with additional study tools.
 
-#### Features Fase 4
+#### Features Phase 4
 
 1. **Flashcards**
-   - Criar flashcards customizados
-   - Deck de flashcards por assunto
-   - Modo revisão com espaçamento
-   - Animação de flip
-   - Estatísticas de acerto
+   - Create custom flashcards
+   - Flashcard deck by subject
+   - Review mode with spacing
+   - Flip animation
+   - Success statistics
 
-2. **Anotações de Estudo**
-   - Bloco de notas por assunto
-   - Editor markdown
-   - Busca em anotações
-   - Exportar anotações
-   - Tags e categorização
+2. **Study Notes**
+   - Subject notes block
+   - Code editor
+   - Note search
+   - Note export
+   - Tags and categorization
 
-3. **Simulados e Provas**
-   - Criar simulados por assunto
-   - Modo cronometrado
-   - Resultados detalhados
-   - Gráficos de desempenho
-   - Comparação com média
+3. **Simulations and Tests**
+   - Create simulations by subject
+   - Timed mode
+   - Detailed results
+   - Performance graphs
+   - Comparison with average
 
-4. **Análise de Progresso Avançada**
-   - Gráficos de desempenho ao longo do tempo
-   - Heatmap de atividades
-   - Estatísticas por assunto
-   - Metas de estudo personalizadas
-   - Relatórios semanais/mensais
+4. **Advanced Progress Analysis**
+   - Performance graphs over time
+   - Activity heatmap
+   - Subject statistics
+   - Custom study goals
+   - Weekly/monthly reports
 
-5. **Conteúdo Multimídia**
-   - Integração com vídeos educacionais
-   - Links para materiais externos
-   - Bibliografia e referências
+5. **Multimedia Content**
+   - Integration with educational videos
+   - Links to external materials
+   - Bibliography and references
 
-#### Implementação Fase 4
+#### Phase 4 Implementation
 ```
-1. Sistema de flashcards (CRUD completo)
-2. Editor de anotações markdown
-3. Sistema de simulados (cronômetro, questões, resultados)
-4. Biblioteca de gráficos (para análises)
-5. Integração com API de vídeos (YouTube, etc.)
-6. Sistema de exportação de dados
-7. Componentes de visualização de dados (gráficos, heatmaps)
+1. Flashcard system (full CRUD)
+2. Code note editor
+3. Simulation system (timer, questions, results)
+4. Graph library (for analyses)
+5. Integration with video API (YouTube, etc.)
+6. Data export system
+7. Data visualization components (graphs, heatmaps)
 ```
 
-### FASE 5: Refinamento e Otimização
-#### Objetivo
-Melhorar performance, UX e adicionar polimento final.
+### PHASE 5: Refinement and Optimization
+#### Objective
+Improve performance, UX, and add final polish.
 
-#### Features Fase 5
+#### Features Phase 5
 
 1. **Performance**
-   - Otimização de bundle size
-   - Lazy loading de componentes
-   - Cache inteligente
-   - Otimização de re-renders
+   - Bundle size optimization
+   - Lazy loading of components
+   - Smart caching
+   - Rerender optimization
 
-2. **Modo Offline**
-   - Sincronização local
-   - Cache de conteúdo
-   - PWA para web
+2. **Offline Mode**
+   - Local synchronization
+   - Content caching
+   - PWA for web
 
-3. **Acessibilidade**
-   - Suporte a leitores de tela
-   - Navegação por teclado
-   - Contraste adequado (mesmo em cyberpunk)
+3. **Accessibility**
+   - Screen reader support
+   - Keyboard navigation
+   - Adequate contrast (even in cyberpunk)
 
-4. **Animações e Transições**
-   - Transições suaves entre páginas
-   - Micro-interações
-   - Loading states estilizados
-   - Feedback visual aprimorado
+4. **Animations and Transitions**
+   - Smooth transitions between pages
+   - Micro-interactions
+   - Styled loading states
+   - Improved visual feedback
 
-5. **Persistência de Dados**
-   - Integração com SQLite
-   - Migrações de banco
-   - Backup e restore
+5. **Data Persistence**
+   - Integration with SQLite
+   - Database migrations
+   - Backup and restore
 
-#### Implementação Fase 5
+#### Phase 5 Implementation
 ```
-1. Profiling e otimização
-2. Implementar persistência local (SQLite)
-3. Migrações de banco de dados
-4. Melhorar acessibilidade
-5. Adicionar animações de transição
-6. Implementar PWA (para web)
-7. Testes de performance
+1. Profiling and optimization
+2. Implement local persistence (SQLite)
+3. Database migrations
+4. Improve accessibility
+5. Add transition animations
+6. Implement PWA (for web)
+7. Performance tests
 ```
 
-## Modelos de Domínio
+## Domain Models
 
-### Redações
+### Essays
 ```rust
 Essay {
     id: Uuid,
     title: String,
     content: String,
-    exam_type: ExamType, // Tipo de vestibular/universidade
+    exam_type: ExamType, // Type of exam/university
     status: EssayStatus,
-    score: Option<u16>, // Varia conforme o exame (0-1000 ENEM, 0-48 Fuvest, etc.)
-    max_score: u16, // Pontuação máxima do tipo de exame
+    score: Option<u16>, // Varies per exam (0-1000 ENEM, 0-48 Fuvest, etc.)
+    max_score: u16, // Maximum score of the exam type
     feedback: Option<String>,
     corrections: Option<Vec<Correction>>,
-    rubric_scores: Option<RubricScores>, // Notas por competência/critério
+    rubric_scores: Option<RubricScores>, // Scores by competency/criterion
     created_at: DateTime<Utc>,
     updated_at: DateTime<Utc>,
     submitted_at: Option<DateTime<Utc>>,
 }
 
 ExamType {
-    ENEM,           // 0-1000 (5 competências, 200 cada)
-    Fuvest,         // USP - 0-48 (8 competências, 0-6 cada)
-    Unicamp,        // 0-60 (10 competências)
-    Unesp,          // 0-40 (5 competências, 0-8 cada)
-    Uerj,           // 0-20 (4 competências, 0-5 cada)
-    Ita,            // 0-50 (10 competências específicas)
-    Ime,            // 0-100 (20 competências técnicas)
-    Ufrj,           // 0-10 (5 competências, 0-2 cada)
+    ENEM,           // 0-1000 (5 competencies, 200 each)
+    Fuvest,         // USP - 0-48 (8 competencies, 0-6 each)
+    Unicamp,        // 0-60 (10 competencies)
+    Unesp,          // 0-40 (5 competencies, 0-8 each)
+    Uerj,           // 0-20 (4 competencies, 0-5 each)
+    Ita,            // 0-50 (10 specific competencies)
+    Ime,            // 0-100 (20 technical competencies)
+    Ufrj,           // 0-10 (5 competencies, 0-2 each)
     Ufmg,           // 0-1000 (similar ENEM)
-    Ufsc,           // 0-100 (10 competências)
-    Ufrgs,          // 0-100 (10 competências)
-    Ufpr,           // 0-100 (10 competências)
-    Ufscar,         // 0-100 (10 competências)
+    Ufsc,           // 0-100 (10 competencies)
+    Ufrgs,          // 0-100 (10 competencies)
+    Ufpr,           // 0-100 (10 competencies)
+    Ufscar,         // 0-100 (10 competencies)
     Ufpe,           // 0-1000 (similar ENEM)
     Ufba,           // 0-1000 (similar ENEM)
     Ufc,            // 0-1000 (similar ENEM)
@@ -361,46 +363,46 @@ ExamType {
     Ufac,           // 0-1000 (similar ENEM)
     Ufrn,           // 0-1000 (similar ENEM)
     Ufms,           // 0-1000 (similar ENEM)
-    Ufg,            // 0-100 (10 competências)
+    Ufg,            // 0-100 (10 competencies)
     Ufes,           // 0-1000 (similar ENEM)
-    Ufjf,           // 0-100 (10 competências)
-    Ufv,            // 0-100 (10 competências)
-    Uftm,           // 0-100 (10 competências)
+    Ufjf,           // 0-100 (10 competencies)
+    Ufv,            // 0-100 (10 competencies)
+    Uftm,           // 0-100 (10 competencies)
     Ufpb,           // 0-1000 (similar ENEM)
     Ufpi,           // 0-1000 (similar ENEM)
     Ufma,           // 0-1000 (similar ENEM)
-    Ufs,            // 0-100 (10 competências)
-    Uft,            // 0-100 (10 competências)
+    Ufs,            // 0-100 (10 competencies)
+    Uft,            // 0-100 (10 competencies)
     Ufopa,          // 0-1000 (similar ENEM)
-    Unb,            // 0-100 (10 competências)
-    Ueg,            // 0-100 (10 competências)
+    Unb,            // 0-100 (10 competencies)
+    Ueg,            // 0-100 (10 competencies)
     Uema,           // 0-1000 (similar ENEM)
     Uece,           // 0-1000 (similar ENEM)
     Uern,           // 0-1000 (similar ENEM)
-    Uepb,           // 0-100 (10 competências)
-    Uepg,           // 0-100 (10 competências)
-    Uel,            // 0-100 (10 competências)
+    Uepb,           // 0-100 (10 competencies)
+    Uepg,           // 0-100 (10 competencies)
+    Uel,            // 0-100 (10 competencies)
     Unemat,         // 0-1000 (similar ENEM)
     Uerr,           // 0-1000 (similar ENEM)
     Uea,            // 0-1000 (similar ENEM)
     Ufrr,           // 0-1000 (similar ENEM)
     Upe,            // 0-1000 (similar ENEM)
-    Uenf,           // 0-100 (10 competências)
-    Unifesp,        // 0-100 (10 competências)
-    Uesc,           // 0-100 (10 competências)
-    Uemg,           // 0-100 (10 competências)
-    Uem,            // 0-100 (10 competências)
-    Uesb,           // 0-100 (10 competências)
-    Uespi,          // 0-100 (10 competências)
-    Uesf,           // 0-100 (10 competências)
-    Uesr,           // 0-100 (10 competências)
-    Uesg,           // 0-100 (10 competências)
+    Uenf,           // 0-100 (10 competencies)
+    Unifesp,        // 0-100 (10 competencies)
+    Uesc,           // 0-100 (10 competencies)
+    Uemg,           // 0-100 (10 competencies)
+    Uem,            // 0-100 (10 competencies)
+    Uesb,           // 0-100 (10 competencies)
+    Uespi,          // 0-100 (10 competencies)
+    Uesf,           // 0-100 (10 competencies)
+    Uesr,           // 0-100 (10 competencies)
+    Uesg,           // 0-100 (10 competencies)
 }
 
 EssayStatus {
     EmProgresso,
     Corrigida,
-    Enviada, // Aguardando correção
+    Enviada, // Waiting for correction
 }
 
 Correction {
@@ -408,35 +410,35 @@ Correction {
     original_text: String,
     suggested_text: String,
     reason: String,
-    rubric_criterion: String, // Qual competência/critério foi afetado
+    rubric_criterion: String, // Which competency/criterion was affected
 }
 
 RubricScores {
-    // Estrutura variável conforme ExamType
-    // Exemplo para ENEM: 5 competências (0-200 cada)
-    // Exemplo para Fuvest: 8 competências (0-6 cada)
-    scores: HashMap<String, u16>, // Chave: nome da competência, Valor: pontuação
-    detailed_feedback: HashMap<String, String>, // Feedback por competência
+    // Variable structure per ExamType
+    // Example for ENEM: 5 competencies (0-200 each)
+    // Example for Fuvest: 8 competencies (0-6 each)
+    scores: HashMap<String, u16>, // Key: competency name, Value: score
+    detailed_feedback: HashMap<String, String>, // Feedback per competency
 }
 
-// Critérios de avaliação específicos por vestibular
+// Specific evaluation criteria per exam
 ExamRubric {
     exam_type: ExamType,
     criteria: Vec<RubricCriterion>,
     max_score: u16,
-    description: String, // Descrição do formato de prova
+    description: String, // Description of exam format
 }
 
 RubricCriterion {
     name: String,
     description: String,
-    weight: f32, // Peso na pontuação total
+    weight: f32, // Weight in total score
     max_score: u16,
-    evaluation_points: Vec<String>, // Pontos de avaliação
+    evaluation_points: Vec<String>, // Evaluation points
 }
 ```
 
-### Questões
+### Questions
 ```rust
 Question {
     id: Uuid,
@@ -480,7 +482,7 @@ Difficulty {
 }
 ```
 
-### Trilhas de Conhecimento
+### Knowledge Trails
 ```rust
 KnowledgeTrail {
     id: Uuid,
@@ -512,7 +514,7 @@ ContentType {
 }
 ```
 
-### Perfil e Progresso
+### Profile and Progress
 ```rust
 UserProfile {
     id: Uuid,
@@ -556,7 +558,7 @@ SubjectProgress {
 }
 ```
 
-### Chat e IA
+### Chat and AI
 ```rust
 ChatMessage {
     id: Uuid,
@@ -606,7 +608,7 @@ FlashcardDeck {
 }
 ```
 
-### Anotações
+### Notes
 ```rust
 Note {
     id: Uuid,
@@ -620,61 +622,61 @@ Note {
 }
 ```
 
-## Casos de Uso (Use Cases)
+## Use Cases
 
-### Redações
-- `CreateEssay`: Criar nova redação (com seleção de ExamType)
-- `SaveEssayDraft`: Salvar rascunho
-- `SubmitEssayForEvaluation`: Enviar para avaliação (com correção específica do tipo de exame)
-- `GetEssayFeedback`: Obter feedback detalhado baseado nos critérios do vestibular
-- `ListEssaysByStatus`: Listar por status
-- `ListEssaysByExamType`: Listar por tipo de vestibular
-- `GetEssayScore`: Obter pontuação
-- `UpdateEssay`: Atualizar redação
-- `GetExamRubric`: Obter critérios de avaliação do tipo de exame
-- `EvaluateEssay`: Avaliar redação usando critérios específicos do ExamType
+### Essays
+- `CreateEssay`: Create new essay (with exam type selection)
+- `SaveEssayDraft`: Save draft
+- `SubmitEssayForEvaluation`: Submit for evaluation (with specific exam correction)
+- `GetEssayFeedback`: Get detailed feedback based on exam criteria
+- `ListEssaysByStatus`: List by status
+- `ListEssaysByExamType`: List by exam type
+- `GetEssayScore`: Get score
+- `UpdateEssay`: Update essay
+- `GetExamRubric`: Get exam type evaluation criteria
+- `EvaluateEssay`: Evaluate essay using specific ExamType criteria
 
-### Questões
-- `SearchQuestions`: Buscar questões
-- `FilterQuestionsBySubject`: Filtrar por assunto
-- `FilterQuestionsByDifficulty`: Filtrar por dificuldade
-- `GetQuestionDetails`: Obter detalhes
-- `MarkQuestionAsAnswered`: Marcar como respondida
-- `GetQuestionExplanation`: Obter explicação
+### Questions
+- `SearchQuestions`: Search questions
+- `FilterQuestionsBySubject`: Filter by subject
+- `FilterQuestionsByDifficulty`: Filter by difficulty
+- `GetQuestionDetails`: Get details
+- `MarkQuestionAsAnswered`: Mark as answered
+- `GetQuestionExplanation`: Get explanation
 
-### Trilhas
-- `StartKnowledgeTrail`: Iniciar trilha
-- `UpdateTrailProgress`: Atualizar progresso
-- `GetTrailDetails`: Obter detalhes
-- `CompleteTrailModule`: Completar módulo
-- `ListAvailableTrails`: Listar trilhas disponíveis
+### Trails
+- `StartKnowledgeTrail`: Start trail
+- `UpdateTrailProgress`: Update progress
+- `GetTrailDetails`: Get details
+- `CompleteTrailModule`: Complete module
+- `ListAvailableTrails`: List available trails
 
 ### Chat Tutor
-- `SendChatMessage`: Enviar mensagem
-- `GetConversationHistory`: Obter histórico
-- `StartNewConversation`: Iniciar nova conversa
-- `GetAIResponse`: Obter resposta da IA
+- `SendChatMessage`: Send message
+- `GetConversationHistory`: Get history
+- `StartNewConversation`: Start new conversation
+- `GetAIResponse`: Get AI response
 
-### Progresso
-- `TrackStudyProgress`: Rastrear progresso
-- `GetUserAchievements`: Obter conquistas
-- `CalculateProgressPercentage`: Calcular porcentagem
-- `GetSubjectProgress`: Obter progresso por assunto
-- `UpdateStudyStreak`: Atualizar sequência de estudo
+### Progress
+- `TrackStudyProgress`: Track progress
+- `GetUserAchievements`: Get achievements
+- `CalculateProgressPercentage`: Calculate percentage
+- `GetSubjectProgress`: Get progress by subject
+- `UpdateStudyStreak`: Update study streak
 
 ### Flashcards
-- `CreateFlashcardDeck`: Criar deck
-- `AddFlashcard`: Adicionar flashcard
-- `ReviewFlashcard`: Revisar flashcard
-- `GetFlashcardsForReview`: Obter para revisão
+- `CreateFlashcardDeck`: Create deck
+- `AddFlashcard`: Add flashcard
+- `ReviewFlashcard`: Review flashcard
+- `GetFlashcardsForReview`: Get for review
 
-### Anotações
-- `CreateNote`: Criar anotação
-- `UpdateNote`: Atualizar anotação
-- `SearchNotes`: Buscar anotações
-- `DeleteNote`: Deletar anotação
+### Notes
+- `CreateNote`: Create note
+- `UpdateNote`: Update note
+- `SearchNotes`: Search notes
+- `DeleteNote`: Delete note
 
-## Traits de Repositório
+## Repository Traits
 
 ```rust
 trait EssayRepository {
@@ -742,126 +744,126 @@ trait NoteRepository {
 }
 ```
 
-## Critérios de Avaliação por Vestibular
+## Evaluation Criteria by Exam
 
 ### ENEM
-- **Pontuação**: 0-1000
-- **Competências** (5 competências, 200 pontos cada):
-  1. Domínio da escrita formal
-  2. Compreensão da proposta
-  3. Seleção e organização de informações
-  4. Demonstração de conhecimento linguístico
-  5. Elaboração de proposta de intervenção
-- **Características**: Texto dissertativo-argumentativo, 30 linhas mínimo
+- **Score**: 0-1000
+- **Competencies** (5 competencies, 200 points each):
+  1. Domain of formal writing
+  2. Understanding of the proposition
+  3. Selection and organization of information
+  4. Demonstration of linguistic knowledge
+  5. Elaboration of intervention proposal
+- **Characteristics**: Dissertative-argumentative text, minimum 30 lines
 
 ### Fuvest (USP)
-- **Pontuação**: 0-48
-- **Competências** (8 competências, 0-6 pontos cada):
-  1. Adequação ao tema e gênero
-  2. Coerência e coesão
-  3. Domínio da norma padrão
-  4. Recursos expressivos
-  5. Vocabulário
-  6. Estrutura textual
-  7. Argumentação
-  8. Originalidade
-- **Características**: Texto argumentativo, foco em raciocínio e originalidade
+- **Score**: 0-48
+- **Competencies** (8 competencies, 0-6 points each):
+  1. Appropriateness to theme and genre
+  2. Coherence and cohesion
+  3. Mastery of standard norms
+  4. Expressive resources
+  5. Vocabulary
+  6. Textual structure
+  7. Argumentation
+  8. Originality
+- **Characteristics**: Argumentative text, focus on reasoning and originality
 
 ### UNICAMP
-- **Pontuação**: 0-60
-- **Competências** (10 competências, 0-6 pontos cada):
-  - Análise e interpretação
-  - Argumentação
-  - Coerência textual
-  - Coesão textual
-  - Adequação ao gênero
-  - Uso adequado da linguagem
-  - Vocabulário
-  - Estruturação
-  - Criatividade
-  - Ortografia e acentuação
-- **Características**: Diversidade de gêneros textuais
+- **Score**: 0-60
+- **Competencies** (10 competencies, 0-6 points each):
+  - Analysis and interpretation
+  - Argumentation
+  - Textual coherence
+  - Textual cohesion
+  - Appropriateness to genre
+  - Proper use of language
+  - Vocabulary
+  - Structuring
+  - Creativity
+  - Orthography and accentuation
+- **Characteristics**: Diversity of textual genres
 
 ### UNESP
-- **Pontuação**: 0-40
-- **Competências** (5 competências, 0-8 pontos cada):
-  1. Adequação ao tema
-  2. Gênero textual
-  3. Coerência
-  4. Coesão
-  5. Correção gramatical
-- **Características**: Foco em domínio linguístico
+- **Score**: 0-40
+- **Competencies** (5 competencies, 0-8 points each):
+  1. Appropriateness to theme
+  2. Textual genre
+  3. Coherence
+  4. Cohesion
+  5. Grammatical correctness
+- **Characteristics**: Focus on linguistic domain
 
 ### UERJ
-- **Pontuação**: 0-20
-- **Competências** (4 competências, 0-5 pontos cada):
-  1. Conteúdo temático
-  2. Estrutura textual
-  3. Linguagem
-  4. Mecanismos de coesão
-- **Características**: Texto dissertativo-argumentativo
+- **Score**: 0-20
+- **Competencies** (4 competencies, 0-5 points each):
+  1. Thematic content
+  2. Textual structure
+  3. Language
+  4. Cohesion mechanisms
+- **Characteristics**: Dissertative-argumentative text
 
-### ITA e IME
-- **Pontuação**: ITA (0-50), IME (0-100)
-- **Competências**: Foco em argumentação técnica e científica
-- **Características**: Redações técnicas com foco em exatas
+### ITA and IME
+- **Score**: ITA (0-50), IME (0-100)
+- **Competencies**: Focus on technical and scientific argumentation
+- **Characteristics**: Technical essays with focus on exact sciences
 
-### Universidades Federais (UFMG, UFPE, UFBA, etc.)
-- **Pontuação**: 0-1000 (similar ENEM) ou 0-100 (sistema próprio)
-- **Competências**: Variam por universidade, geralmente baseadas no ENEM
-- **Características**: Adaptação dos critérios ENEM para contexto regional
+### Federal Universities (UFMG, UFPE, UFBA, etc.)
+- **Score**: 0-1000 (similar ENEM) or 0-100 (own system)
+- **Competencies**: Vary by university, generally based on ENEM
+- **Characteristics**: Adaptation of ENEM criteria to regional context
 
-### Notas Importantes para Implementação
-1. Cada vestibular tem critérios específicos documentados
-2. A IA deve avaliar usando os critérios corretos de cada exame
-3. Feedback deve mencionar especificamente as competências avaliadas
-4. Interface deve exibir score no formato correto (0-1000, 0-48, 0-60, etc.)
-5. Banco de dados deve armazenar rubricas oficiais de cada vestibular
+### Important Notes for Implementation
+1. Each exam has specific documented criteria
+2. The AI must evaluate using the correct criteria for each exam
+3. Feedback should specifically mention the evaluated competencies
+4. The interface should display the score in the correct format (0-1000, 0-48, 0-60, etc.)
+5. The database should store official rubrics for each exam
 
-## Rotas da Aplicação
+## Application Routes
 
 ```
-/                          # Home (Plano de Estudo)
-/questoes                  # Lista de questões
-/questao/:id               # Detalhes da questão
-/redacoes                  # Lista de redações
-/redacao/:id               # Detalhes da redação
-/redacao/nova              # Criar nova redação
-/redacao/nova/:exam_type   # Criar redação para vestibular específico
-/redacoes/:exam_type       # Listar redações por tipo de vestibular
-/trilhas                   # Lista de trilhas
-/trilha/:id                # Detalhes da trilha
-/chat                      # Chat tutor (lista de conversas)
-/chat/:id                  # Conversa específica
-/flashcards                # Lista de decks de flashcards
-/flashcards/deck/:id       # Deck específico
-/notas                     # Lista de anotações
-/nota/:id                  # Anotação específica
-/nota/nova                 # Criar nova anotação
-/simulados                 # Lista de simulados
-/simulado/:id              # Detalhes do simulado
-/analise                   # Análise de progresso
-/perfil                    # Perfil do usuário
-/configuracoes             # Configurações
+/                          # Home (Study Plan)
+/questoes                  # Question list
+/questao/:id               # Question details
+/redacoes                  # Essay list
+/redacao/:id               # Essay details
+/redacao/nova              # Create new essay
+/redacao/nova/:exam_type   # Create essay for specific exam
+/redacoes/:exam_type       # List essays by exam type
+/trilhas                   # Trail list
+/trilha/:id                # Trail details
+/chat                      # Tutor chat (conversation list)
+/chat/:id                  # Specific conversation
+/flashcards                # Flashcard deck list
+/flashcards/deck/:id       # Specific deck
+/notas                     # Notes list
+/nota/:id                  # Specific note
+/nota/nova                 # Create new note
+/simulados                 # Simulation list
+/simulado/:id              # Simulation details
+/analise                   # Progress analysis
+/perfil                    # User profile
+/configuracoes             # Settings
 ```
 
-## Padrões de Implementação
+## Implementation Patterns
 
-### Estrutura de Caso de Uso
-```rust
+### Use Case Structure
+``rust
 pub struct CreateEssayUseCase {
     essay_repo: Arc<dyn EssayRepository>,
 }
 
 impl CreateEssayUseCase {
     pub async fn execute(&self, user_id: Uuid, title: String) -> Result<Essay> {
-        // Lógica do caso de uso
+        // Use case logic
     }
 }
 ```
 
-### Estrutura de Componente Dioxus
-```rust
+### Dioxus Component Structure
+``rust
 #[component]
 fn NeonButton(cx: Scope, props: NeonButtonProps) -> Element {
     render! {
@@ -874,8 +876,8 @@ fn NeonButton(cx: Scope, props: NeonButtonProps) -> Element {
 }
 ```
 
-### Tema Cyberpunk em CSS
-```css
+### Cyberpunk Theme in CSS
+```
 .neon-button {
     background: transparent;
     border: 2px solid #9d4edd;
@@ -893,68 +895,68 @@ fn NeonButton(cx: Scope, props: NeonButtonProps) -> Element {
 
 
 
-## Comandos de Desenvolvimento
+## Development Commands
 
 ### Makefile Targets
 ```makefile
-dev-web:       # Desenvolver para web (wasm)
-dev-desktop:   # Desenvolver para desktop
-dev-mobile:    # Desenvolver para mobile
-test:          # Rodar testes
+dev-web:       # Develop for web (wasm)
+dev-desktop:   # Develop for desktop
+dev-mobile:    # Develop for mobile
+test:          # Run tests
 check:         # cargo check
 fmt:           # cargo fmt
 clippy:        # cargo clippy
-build:         # Build de produção
+build:         # Production build
 ```
 
-## Princípios de Desenvolvimento
+## Development Principles
 
-1. **Arquitetura Limpa**: Domínio → Dados → Apresentação
-2. **TDD**: Testes unitários para lógica de domínio
-3. **Async/Await**: Todas operações I/O são assíncronas
-4. **Idioma Português**: UI e conteúdo em português
-5. **Multiplataforma**: Funcionar em web, desktop e mobile
-6. **Acessibilidade**: Mesmo em cyberpunk, manter acessibilidade
-7. **Performance**: Otimizar para dispositivos móveis
-8. **Consistência Visual**: Manter tema cyberpunk em todos os componentes
-9. **Componentes Reutilizáveis**: Criar biblioteca de componentes UI
-10. **Documentação**: Manter código documentado
+1. **Clean Architecture**: Domain → Data → Presentation
+2. **TDD**: Unit tests for domain logic
+3. **Async/Await**: All I/O operations are asynchronous
+4. **Portuguese Language**: UI and content in Portuguese
+5. **Multiplatform**: Work on web, desktop, and mobile
+6. **Accessibility**: Even in cyberpunk, maintain accessibility
+7. **Performance**: Optimize for mobile devices
+8. **Visual Consistency**: Maintain cyberpunk theme in all components
+9. **Reusable Components**: Create UI component library
+10. **Documentation**: Keep code documented
 
-## Checklist de Implementação por Fase
+## Implementation Checklist by Phase
 
-### Fase 1 ✅
+### Phase 1 ✅
 - [ ] Setup workspace Rust
-- [ ] Configurar Dioxus
-- [ ] Criar estrutura de crates
-- [ ] Implementar componentes UI base
-- [ ] Tema cyberpunk completo
-- [ ] Roteamento básico
-- [ ] Páginas principais (lista)
+- [ ] Configure Dioxus
+- [ ] Create crate structure
+- [ ] Implement base UI components
+- [ ] Complete cyberpunk theme
+- [ ] Basic routing
+- [ ] Main pages (list)
 
-### Fase 2 ✅
-- [ ] Editor de redação
-- [ ] Avaliação de redação (mock)
-- [ ] Visualização de questão
-- [ ] Sistema de trilhas básico
-- [ ] Rastreamento de progresso
+### Phase 2 ✅
+- [ ] Essay editor
+- [ ] Essay evaluation (mock)
+- [ ] Question viewing
+- [ ] Basic trail system
+- [ ] Progress tracking
 
-### Fase 3 ✅
-- [ ] Integração com IA
-- [ ] Chat tutor
-- [ ] Avaliação IA real
-- [ ] Sistema de conquistas
-- [ ] Recomendações
+### Phase 3 ✅
+- [ ] AI integration
+- [ ] Tutor chat
+- [ ] Real AI evaluation
+- [ ] Achievement system
+- [ ] Recommendations
 
-### Fase 4 ✅
-- [ ] Sistema de flashcards
-- [ ] Editor de anotações
-- [ ] Sistema de simulados
-- [ ] Análise de progresso avançada
-- [ ] Integração multimídia
+### Phase 4 ✅
+- [ ] Flashcard system
+- [ ] Note editor
+- [ ] Simulation system
+- [ ] Advanced progress analysis
+- [ ] Multimedia integration
 
-### Fase 5 ✅
-- [ ] Otimização de performance
-- [ ] Modo offline
-- [ ] Persistência SQLite
-- [ ] Acessibilidade completa
-- [ ] Animações refinadas
+### Phase 5 ✅
+- [ ] Performance optimization
+- [ ] Offline mode
+- [ ] SQLite persistence
+- [ ] Complete accessibility
+- [ ] Refined animations

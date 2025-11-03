@@ -1,98 +1,100 @@
-# Status do Projeto NeuroNexus
+# NeuroNexus Project Status
 
-## ✅ FASE 1: Core MVP - CONCLUÍDA
+> 🌐 **[Português](docs/pt/STATUS.md)** | **[中文](docs/zh/STATUS.md)**
 
-### Estrutura do Projeto ✅
-- Workspace Rust configurado com 5 crates
-- Arquitetura Clean Architecture implementada
-- Todos os modelos de domínio criados
+## ✅ PHASE 1: Core MVP - COMPLETED
 
-### Seeders de Dados ✅
-- **11 questões reais** cobrindo múltiplas matérias
-- **4 redações** com feedbacks detalhados
-- **3 trilhas de conhecimento** com módulos
-- **1 usuário de teste** configurado
-- Função `seed_all_data()` completa e funcional
+### Project Structure ✅
+- Rust workspace configured with 5 crates
+- Clean Architecture implemented
+- All domain models created
 
-### Componentes UI Cyberpunk ✅
-- NeonButton com variantes
-- NeonInput (implementação básica)
-- CyberCard com hover effects
-- StatusBar superior
-- TabBar de navegação
+### Data Seeders ✅
+- **11 real questions** covering multiple subjects
+- **4 essays** with detailed feedback
+- **3 knowledge trails** with modules
+- **1 test user** configured
+- Complete and functional `seed_all_data()` function
+
+### Cyberpunk UI Components ✅
+- NeonButton with variants
+- NeonInput (basic implementation)
+- CyberCard with hover effects
+- StatusBar at top
+- TabBar navigation
 - NeonProgressBar
 
-### Tema CSS ✅
-- Cores neon completas
-- Efeitos glow e sombras
-- Tema dark com gradientes
-- Scrollbar customizada
+### CSS Theme ✅
+- Complete neon colors
+- Glow effects and shadows
+- Dark theme with gradients
+- Customized scrollbar
 
-### Páginas ✅
-- Home (Plano de Estudo)
-- Questões (lista com busca)
-- Redações (lista com status)
-- Perfil (informações do usuário)
+### Pages ✅
+- Home (Study Plan)
+- Questions (list with search)
+- Essays (list with status)
+- Profile (user information)
 
-### Roteamento ✅
-- Sistema de rotas funcionando
-- Navegação entre páginas
+### Routing ✅
+- Working route system
+- Navigation between pages
 
-### Compilação ✅
-- **App compila com sucesso!**
-- Apenas warnings menores (não críticos)
+### Compilation ✅
+- **App compiles successfully!**
+- Only minor warnings (non-critical)
 
-## 📋 Próximos Passos
+## 📋 Next Steps
 
-### Integração de Dados
-1. Integrar seeders com a aplicação (usar contexto Dioxus ou estado global)
-2. Conectar repositórios com as páginas para exibir dados reais
-3. Implementar busca funcional de questões
-4. Carregar redações do repositório
+### Data Integration
+1. Integrate seeders with the application (use Dioxus context or global state)
+2. Connect repositories with pages to display real data
+3. Implement functional question search
+4. Load essays from repository
 
-### Melhorias UI
-1. Implementar funcionalidade completa do NeonInput (eventos)
-2. Adicionar loading states
-3. Melhorar responsividade mobile
+### UI Improvements
+1. Implement full NeonInput functionality (events)
+2. Add loading states
+3. Improve mobile responsiveness
 
-### FASE 2: Funcionalidades Educacionais
-- Editor de redação
-- Avaliação de redação (mock)
-- Visualização detalhada de questão
-- Sistema de trilhas completo
+### PHASE 2: Educational Features
+- Essay editor
+- Essay evaluation (mock)
+- Detailed question view
+- Complete trail system
 
-## 🎯 Como Executar
+## 🎯 How to Run
 
 ```bash
-# Compilar
+# Compile
 cargo build --bin app
 
-# Executar (web)
+# Run (web)
 cargo run --bin app
 ```
 
-## 📁 Estrutura de Arquivos
+## 📁 File Structure
 
 ```
 NeuroNexus/
-├── CODEX.md              # Especificação completa
-├── README.md              # Visão geral
-├── SEEDERS.md            # Documentação dos seeders
-├── STATUS.md             # Este arquivo
+├── CODEX.md              # Complete specification
+├── README.md             # Overview
+├── SEEDERS.md            # Seeders documentation
+├── STATUS.md             # This file
 ├── Cargo.toml            # Workspace config
 └── crates/
-    ├── domain/           # Modelos e lógica de negócio
-    ├── data/             # Repositórios e seeders
-    ├── app/              # UI Dioxus
-    ├── shared/           # Utilitários
-    └── services/         # Serviços externos (placeholder)
+    ├── domain/           # Models and business logic
+    ├── data/             # Repositories and seeders
+    ├── app/              # Dioxus UI
+    ├── shared/           # Utilities
+    └── services/         # External services (placeholder)
 ```
 
-## ✨ Destaques
+## ✨ Highlights
 
-- **Arquitetura Limpa**: Separação clara de responsabilidades
-- **Dados Reais**: Seeders com conteúdo educacional realista
-- **Design Cyberpunk**: Tema neon completo e imersivo
-- **Multiplataforma**: Preparado para web, desktop e mobile
-- **Tipo-Safe**: Rust garantindo segurança em tempo de compilação
+- **Clean Architecture**: Clear separation of responsibilities
+- **Real Data**: Seeders with realistic educational content
+- **Cyberpunk Design**: Complete and immersive neon theme
+- **Cross-platform**: Ready for web, desktop and mobile
+- **Type-Safe**: Rust guaranteeing compile-time safety
 

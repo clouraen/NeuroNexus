@@ -1,10 +1,15 @@
 use dioxus::prelude::*;
 use crate::components::*;
+use crate::context::AppContext;
+use shared::i18n::locale::get_supported_languages;
 
 #[component]
 pub fn Profile() -> Element {
+    let ctx = use_context::<AppContext>();
     let mut notifications_enabled = use_signal(|| true);
     let mut show_import_modal = use_signal(|| false);
+    let mut selected_locale = use_signal(|| ctx.current_locale());
+    let supported_languages = get_supported_languages();
     
     rsx! {
         div {
@@ -24,7 +29,7 @@ pub fn Profile() -> Element {
                             class: "panel-container",
                             h2 {
                                 class: "panel-title",
-                                "PERFIL"
+                                "{ctx.t(\"profile-header-title\")}"
                             }
                             div {
                                 class: "panel-card",
@@ -54,7 +59,7 @@ pub fn Profile() -> Element {
                                         }
                                         span {
                                             class: "stat-desc",
-                                            "Dias de sequência"
+                                            "{ctx.t(\"profile-stats-streak\")}"
                                         }
                                     }
                                     div {
@@ -65,7 +70,7 @@ pub fn Profile() -> Element {
                                         }
                                         span {
                                             class: "stat-desc",
-                                            "Tempo de estudo"
+                                            "{ctx.t(\"profile-stats-study-time\")}"
                                         }
                                     }
                                 }
@@ -79,18 +84,43 @@ pub fn Profile() -> Element {
                                 class: "panel-header-with-button",
                                 h2 {
                                     class: "panel-title",
-                                    "CONFIGURAÇÕES"
+                                    "{ctx.t(\"profile-section-preferences\")}"
                                 }
                                 button {
                                     class: "import-button",
                                     onclick: move |_| show_import_modal.set(true),
-                                    "📥 IMPORTAR"
+                                    "{ctx.t(\"common-button-import\")}"
                                 }
                             }
                             div {
                                 class: "panel-card",
+                                // Language Selector
+                                div {
+                                    class: "setting-item",
+                                    label {
+                                        class: "setting-label",
+                                        "{ctx.t(\"profile-lang-select\")}"
+                                    }
+                                    select {
+                                        class: "language-select",
+                                        value: "{selected_locale()}",
+                                        onchange: move |evt| {
+                                            let new_locale = evt.value();
+                                            if let Ok(_) = ctx.set_locale(&new_locale) {
+                                                selected_locale.set(new_locale.clone());
+                                            }
+                                        },
+                                        for lang in supported_languages.iter() {
+                                            option {
+                                                value: "{lang.code}",
+                                                selected: lang.code == selected_locale(),
+                                                "{lang.native_name} ({lang.english_name})"
+                                            }
+                                        }
+                                    }
+                                }
                                 Toggle {
-                                    label: "Notificações".to_string(),
+                                    label: ctx.t("profile-pref-notifications"),
                                     checked: notifications_enabled(),
                                     on_change: move |value| {
                                         notifications_enabled.set(value);

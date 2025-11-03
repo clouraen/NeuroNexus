@@ -1,101 +1,103 @@
-# NeuroNexus - Guia Rápido
+# NeuroNexus - Quick Start Guide
 
-## 🚀 Início Rápido
+> 🌐 **[Português](docs/pt/QUICKSTART.md)** | **[中文](docs/zh/QUICKSTART.md)**
 
-### Pré-requisitos
-- Rust 1.75+ instalado
-- Cargo instalado
+## 🚀 Quick Start
 
-### Executar a Aplicação
+### Prerequisites
+- Rust 1.75+ installed
+- Cargo installed
+
+### Run the Application
 
 ```bash
-# Compilar e executar
+# Compile and run
 cargo run --bin app
 
-# Ou apenas compilar
+# Or just compile
 cargo build --bin app
 
-# Build de release
+# Release build
 cargo build --bin app --release
 ```
 
-A aplicação será servida em `http://localhost:8080` (ou porta configurada pelo Dioxus).
+The application will be served at `http://localhost:8080` (or port configured by Dioxus).
 
-## 📦 Estrutura do Projeto
+## 📦 Project Structure
 
 ```
 NeuroNexus/
-├── CODEX.md              # Especificação completa do projeto
-├── README.md              # Visão geral
-├── SEEDERS.md            # Documentação dos seeders
-├── STATUS.md             # Status atual do desenvolvimento
-├── QUICKSTART.md         # Este arquivo
-├── Cargo.toml            # Configuração do workspace
+├── CODEX.md              # Complete project specification
+├── README.md             # Overview
+├── SEEDERS.md            # Seeders documentation
+├── STATUS.md             # Current development status
+├── QUICKSTART.md         # This file
+├── CARGO.toml            # Workspace configuration
 └── crates/
-    ├── domain/           # Lógica de negócio e modelos
-    ├── data/             # Repositórios e seeders
-    ├── app/              # Interface Dioxus
-    ├── shared/           # Utilitários compartilhados
-    └── services/         # Serviços externos (futuro)
+    ├── domain/           # Business logic and models
+    ├── data/             # Repositories and seeders
+    ├── app/              # Dioxus interface
+    ├── shared/           # Shared utilities
+    └── services/         # External services (future)
 ```
 
-## 🎨 Recursos Implementados
+## 🎨 Implemented Features
 
-### Interface Cyberpunk Neon
-- ✅ Tema dark com cores neon (roxo, rosa, azul, dourado)
-- ✅ Efeitos glow e sombras
-- ✅ Componentes estilizados (botões, cards, inputs)
-- ✅ Navegação por tabs
+### Cyberpunk Neon Interface
+- ✅ Dark theme with neon colors (purple, pink, blue, gold)
+- ✅ Glow effects and shadows
+- ✅ Styled components (buttons, cards, inputs)
+- ✅ Tab navigation
 
-### Funcionalidades
-- ✅ Dashboard de plano de estudo
-- ✅ Lista de questões (11 questões reais)
-- ✅ Lista de redações (4 redações)
-- ✅ Perfil do usuário
-- ✅ Sistema de rotas
+### Functionalities
+- ✅ Study plan dashboard
+- ✅ Questions list (11 real questions)
+- ✅ Essays list (4 essays)
+- ✅ User profile
+- ✅ Routing system
 
-### Dados de Teste
-- ✅ 11 questões reais de múltiplas matérias
-- ✅ 4 redações com feedbacks
-- ✅ 3 trilhas de conhecimento
-- ✅ Usuário de teste configurado
+### Test Data
+- ✅ 11 real questions from multiple subjects
+- ✅ 4 essays with feedback
+- ✅ 3 knowledge trails
+- ✅ Test user configured
 
-## 🔧 Comandos Úteis
+## 🔧 Useful Commands
 
 ```bash
-# Verificar código
+# Check code
 cargo check
 
-# Formatar código
+# Format code
 cargo fmt
 
 # Linter
 cargo clippy
 
-# Testes (quando implementados)
+# Tests (when implemented)
 cargo test
 
-# Limpar build
+# Clean build
 cargo clean
 ```
 
-## 📝 Próximas Funcionalidades
+## 📝 Upcoming Features
 
-- Editor de redação
-- Visualização detalhada de questões
-- Sistema de busca funcional
-- Integração com repositórios em tempo real
-- Chat tutor com IA (Fase 3)
-- Sistema de conquistas
+- Essay editor
+- Detailed question view
+- Functional search system
+- Real-time repository integration
+- AI tutor chat (Phase 3)
+- Achievement system
 
-## 🐛 Problemas Conhecidos
+## 🐛 Known Issues
 
-- NeonInput ainda não captura eventos de input completamente (placeholder)
-- Alguns warnings de lifetime (não críticos)
+- NeonInput doesn't fully capture input events yet (placeholder)
+- Some lifetime warnings (non-critical)
 
-## 📚 Documentação
+## 📚 Documentation
 
-- `CODEX.md` - Especificação completa
-- `SEEDERS.md` - Detalhes dos dados de teste
-- `STATUS.md` - Status atual do desenvolvimento
+- `CODEX.md` - Complete specification
+- `SEEDERS.md` - Test data details
+- `STATUS.md` - Current development status
 

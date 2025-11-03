@@ -1,9 +1,12 @@
 use dioxus::prelude::*;
 use dioxus_router::Link;
 use crate::app::Route;
+use crate::context::AppContext;
 
 #[component]
 pub fn Sidebar() -> Element {
+    let ctx = use_context::<AppContext>();
+    
     rsx! {
         aside {
             class: "sidebar",
@@ -23,32 +26,32 @@ pub fn Sidebar() -> Element {
                 NavItem {
                     route: Route::Home {},
                     icon: "📊",
-                    label: "Dashboard",
-                    description: "Visão geral e métricas"
+                    label: ctx.t("nav-sidebar-label-dashboard"),
+                    description: ctx.t("nav-sidebar-desc-dashboard")
                 }
                 NavItem {
                     route: Route::KnowledgeTrails {},
                     icon: "🗺️",
-                    label: "Trilhas de Conhecimento",
-                    description: "Caminhos de aprendizado"
+                    label: ctx.t("nav-sidebar-label-trails"),
+                    description: ctx.t("nav-sidebar-desc-trails")
                 }
                 NavItem {
                     route: Route::Questions {},
                     icon: "❓",
-                    label: "Questões",
-                    description: "Pratique exercícios"
+                    label: ctx.t("nav-sidebar-label-questions"),
+                    description: ctx.t("nav-sidebar-desc-questions")
                 }
                 NavItem {
                     route: Route::Essays {},
                     icon: "✍️",
-                    label: "Redações",
-                    description: "Escreva e corrija"
+                    label: ctx.t("nav-sidebar-label-essays"),
+                    description: ctx.t("nav-sidebar-desc-essays")
                 }
                 NavItem {
                     route: Route::Profile {},
                     icon: "👤",
-                    label: "Perfil",
-                    description: "Configurações e progresso"
+                    label: ctx.t("nav-sidebar-label-profile"),
+                    description: ctx.t("nav-sidebar-desc-profile")
                 }
             }
             div {
@@ -63,7 +66,7 @@ pub fn Sidebar() -> Element {
                         }
                         span {
                             class: "stat-label-mini",
-                            "Sequência"
+                            "{ctx.t(\"profile-stats-sequences\")}"
                         }
                     }
                     div {
@@ -74,7 +77,7 @@ pub fn Sidebar() -> Element {
                         }
                         span {
                             class: "stat-label-mini",
-                            "Hoje"
+                            "{ctx.t(\"common-time-today\")}"
                         }
                     }
                 }
@@ -87,8 +90,8 @@ pub fn Sidebar() -> Element {
 struct NavItemProps {
     route: Route,
     icon: &'static str,
-    label: &'static str,
-    description: &'static str,
+    label: String,
+    description: String,
 }
 
 #[component]

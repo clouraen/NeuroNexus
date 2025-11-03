@@ -5,6 +5,7 @@ use domain::traits::{EssayRepository, QuestionRepository, KnowledgeTrailReposito
 
 #[component]
 pub fn Home() -> Element {
+    let ctx = use_context::<AppContext>();
     let mut stats = use_signal(|| (0u32, 0u32, 0u32));
     
     // Carregar estatísticas
@@ -32,7 +33,7 @@ pub fn Home() -> Element {
                     class: "page-container",
                     h1 {
                         class: "page-title",
-                        "DASHBOARD"
+                        "{ctx.t(\"home-header-title\")}"
                     }
                     div {
                         class: "dashboard-grid",
@@ -44,7 +45,7 @@ pub fn Home() -> Element {
                             }
                             div {
                                 class: "stat-label",
-                                "Redações"
+                                "{ctx.t(\"home-stats-essays\")}"
                             }
                         }
                         CyberCard {
@@ -55,7 +56,7 @@ pub fn Home() -> Element {
                             }
                             div {
                                 class: "stat-label",
-                                "Questões Disponíveis"
+                                "{ctx.t(\"home-stats-questions\")}"
                             }
                         }
                         CyberCard {

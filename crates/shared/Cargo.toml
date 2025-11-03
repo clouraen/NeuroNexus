@@ -8,4 +8,10 @@ uuid.workspace = true
 serde.workspace = true
 chrono.workspace = true
 thiserror.workspace = true
+fluent.workspace = true
+fluent-bundle.workspace = true
+fluent-syntax.workspace = true
+unic-langid.workspace = true
+intl-memoizer.workspace = true
+sys-locale.workspace = true
 

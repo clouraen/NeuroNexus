@@ -1285,6 +1285,41 @@ body {
     cursor: pointer;
 }
 
+.language-select {
+    width: 100%;
+    background: rgba(10, 10, 10, 0.9);
+    border: 2px solid var(--neon-purple);
+    border-radius: 14px;
+    color: var(--neon-purple-light);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(157, 78, 221, 0.2);
+}
+
+.language-select:hover {
+    border-color: var(--neon-purple-bright);
+    box-shadow: 0 0 15px rgba(157, 78, 221, 0.4);
+}
+
+.language-select:focus {
+    outline: none;
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.language-select option {
+    background: rgba(10, 10, 10, 0.95);
+    color: var(--neon-purple-light);
+    padding: 0.5rem;
+}
+
+.language-select option:hover {
+    background: rgba(157, 78, 221, 0.2);
+}
+
 .essay-content-textarea {
     width: 100%;
     min-height: 400px;

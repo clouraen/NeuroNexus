@@ -1,78 +1,80 @@
-# Progresso do Projeto NeuroNexus
+# NeuroNexus Project Progress
 
-## ✅ FASE 1: Core MVP - CONCLUÍDA
+> 🌐 **[Português](docs/pt/PROGRESS.md)** | **[中文](docs/zh/PROGRESS.md)**
 
-### Estrutura do Projeto
-- ✅ Workspace Rust configurado com 5 crates
-- ✅ Arquitetura Clean Architecture implementada
-- ✅ Todos os modelos de domínio criados
+## ✅ PHASE 1: Core MVP - COMPLETED
 
-### Seeders de Dados
-- ✅ **11 questões reais** cobrindo múltiplas matérias:
-  - Matemática (3): função quadrática, equação do 1º grau, logaritmos
-  - História (2): descobrimento do Brasil, Inconfidência Mineira
-  - Física (2): lançamento vertical, capacitores
-  - Química (1): cálculo de pH
-  - Biologia (1): fotossíntese
-  - Literatura (1): Machado de Assis
-  - Geografia (1): biomas brasileiros
-  - Português (1): acentuação ortográfica
+### Project Structure
+- ✅ Rust workspace configured with 5 crates
+- ✅ Clean Architecture implemented
+- ✅ All domain models created
 
-- ✅ **4 redações de exemplo**:
-  - ENEM em progresso
-  - ENEM corrigida (820/1000) com feedback detalhado
-  - FUVEST em progresso
-  - UNICAMP corrigida (52/60)
+### Data Seeders
+- ✅ **11 real questions** covering multiple subjects:
+  - Mathematics (3): quadratic function, 1st degree equation, logarithms
+  - History (2): discovery of Brazil, Inconfidência Mineira
+  - Physics (2): vertical launch, capacitors
+  - Chemistry (1): pH calculation
+  - Biology (1): photosynthesis
+  - Literature (1): Machado de Assis
+  - Geography (1): Brazilian biomes
+  - Portuguese (1): orthographic accentuation
 
-- ✅ **3 trilhas de conhecimento**:
-  - Fundamentos de Matemática
-  - História do Brasil (30% completo)
-  - Física Mecânica
+- ✅ **4 sample essays**:
+  - ENEM in progress
+  - ENEM graded (820/1000) with detailed feedback
+  - FUVEST in progress
+  - UNICAMP graded (52/60)
 
-### Componentes UI Cyberpunk
-- ✅ NeonButton com variantes
-- ✅ NeonInput com eventos
-- ✅ CyberCard com hover effects
-- ✅ StatusBar superior
-- ✅ TabBar de navegação
+- ✅ **3 knowledge trails**:
+  - Mathematics Fundamentals
+  - Brazilian History (30% complete)
+  - Mechanical Physics
+
+### Cyberpunk UI Components
+- ✅ NeonButton with variants
+- ✅ NeonInput with events
+- ✅ CyberCard with hover effects
+- ✅ StatusBar at top
+- ✅ TabBar navigation
 - ✅ NeonProgressBar
 
-### Tema CSS
-- ✅ Cores neon completas (roxo, rosa, azul, dourado)
-- ✅ Efeitos glow e sombras
-- ✅ Tema dark com gradientes
-- ✅ Scrollbar customizada
+### CSS Theme
+- ✅ Complete neon colors (purple, pink, blue, gold)
+- ✅ Glow effects and shadows
+- ✅ Dark theme with gradients
+- ✅ Customized scrollbar
 
-### Páginas
-- ✅ Home (Plano de Estudo)
-- ✅ Questões (lista com busca)
-- ✅ Redações (lista com status)
-- ✅ Perfil (informações do usuário)
+### Pages
+- ✅ Home (Study Plan)
+- ✅ Questions (list with search)
+- ✅ Essays (list with status)
+- ✅ Profile (user information)
 
-### Status Atual
-- ✅ Repositórios em memória funcionando
-- ✅ Seeders completos e funcionais
-- ⚠️ App Dioxus: alguns erros de compilação restantes (Router API, eventos)
+### Current Status
+- ✅ In-memory repositories working
+- ✅ Complete and functional seeders
+- ⚠️ Dioxus App: some remaining compilation errors (Router API, events)
 
-## Próximos Passos
+## Next Steps
 
-1. **Corrigir erros de compilação do app Dioxus**
-   - Ajustar API do Router para Dioxus 0.4
-   - Corrigir tipos de eventos
-   - Ajustar Props dos componentes
+1. **Fix Dioxus app compilation errors**
+   - Adjust Router API for Dioxus 0.4
+   - Fix event types
+   - Adjust component Props
 
-2. **Integrar seeders com a aplicação**
-   - Chamar seed_all_data() na inicialização
-   - Conectar repositórios com as páginas
+2. **Integrate seeders with application**
+   - Call seed_all_data() on initialization
+   - Connect repositories with pages
 
-3. **Testar aplicação**
-   - Executar `cargo run --bin app`
-   - Verificar navegação entre páginas
-   - Testar busca de questões
+3. **Test application**
+   - Run `cargo run --bin app`
+   - Verify navigation between pages
+   - Test question search
 
-## Arquivos Importantes
+## Important Files
 
-- `SEEDERS.md` - Documentação completa dos seeders
-- `CODEX.md` - Especificação completa do projeto
-- `README.md` - Visão geral do projeto
+- `SEEDERS.md` - Complete seeders documentation
+- `CODEX.md` - Complete project specification
+- `README.md` - Project overview
 

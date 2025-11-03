@@ -1,32 +1,34 @@
 # NeuroNexus
 
-Plataforma educacional multiplataforma (web, desktop, mobile) construída com Rust e Dioxus, focada em preparação para vestibulares e ENEM.
+> 🌐 **[Português](docs/pt/README.md)** | **[中文](docs/zh/README.md)**
+
+A cross-platform educational platform (web, desktop, mobile) built with Rust and Dioxus, focused on college entrance exam and ENEM preparation.
 
 ## 🎨 Design
 
-Interface cyberpunk neon inspirada em Cyberpunk 2077 e Blade Runner 2049, com tema dark e efeitos neon.
+Cyberpunk neon interface inspired by Cyberpunk 2077 and Blade Runner 2049, featuring dark theme and neon effects.
 
-## 🏗️ Arquitetura
+## 🏗️ Architecture
 
-O projeto utiliza Clean Architecture com a seguinte estrutura:
+The project uses Clean Architecture with the following structure:
 
 ```
 crates/
-├── domain/     # Lógica de negócio, modelos, casos de uso, traits
-├── data/       # Implementações de repositórios, banco de dados, seeders
-├── app/        # Componentes Dioxus, páginas, roteamento, UI
-├── shared/     # Utilitários compartilhados, tipos comuns
-└── services/   # Serviços externos (IA, API, etc.)
+├── domain/     # Business logic, models, use cases, traits
+├── data/       # Repository implementations, database, seeders
+├── app/        # Dioxus components, pages, routing, UI
+├── shared/     # Shared utilities, common types
+└── services/   # External services (AI, APIs, etc.)
 ```
 
-## 🚀 Desenvolvimento
+## 🚀 Development
 
-### Pré-requisitos
+### Prerequisites
 
-- Rust 1.75 ou superior
+- Rust 1.75 or higher
 - Cargo
 
-### Executar (Web)
+### Run (Web)
 
 ```bash
 cargo run --bin app
@@ -38,43 +40,42 @@ cargo run --bin app
 cargo build --release
 ```
 
-## 📋 Fases de Implementação
+## 📋 Implementation Phases
 
-### ✅ FASE 1: Core MVP (Em andamento)
-- [x] Setup do workspace Rust
-- [x] Estrutura de crates
-- [x] Modelos de domínio básicos
-- [x] Componentes UI cyberpunk
-- [x] Roteamento básico
-- [x] Páginas principais
-- [x] Repositórios em memória
-- [ ] Seeders de dados de teste
+### ✅ PHASE 1: Core MVP (In Progress)
+- [x] Rust workspace setup
+- [x] Crate structure
+- [x] Basic domain models
+- [x] Cyberpunk UI components
+- [x] Basic routing
+- [x] Main pages
+- [x] In-memory repositories
+- [ ] Test data seeders
 
-### FASE 2: Funcionalidades Educacionais Essenciais
-- [ ] Editor de redação
-- [ ] Avaliação de redação
-- [ ] Visualização de questão
-- [ ] Sistema de trilhas
+### PHASE 2: Essential Educational Features
+- [ ] Essay editor
+- [ ] Essay evaluation
+- [ ] Question viewing
+- [ ] Trail system
 
-### FASE 3: IA e Personalização
-- [ ] Chat tutor com IA
-- [ ] Avaliação de redação com IA
-- [ ] Trilhas personalizadas
-- [ ] Sistema de conquistas
+### PHASE 3: AI and Personalization
+- [ ] AI tutor chat
+- [ ] AI-powered essay evaluation
+- [ ] Personalized trails
+- [ ] Achievement system
 
-## 📚 Documentação
+## 📚 Documentation
 
-Consulte `CODEX.md` para documentação completa do projeto.
+See `CODEX.md` for complete project documentation.
 
-## 🎯 Tecnologias
+## 🎯 Technologies
 
-- **Rust**: Linguagem principal
-- **Dioxus**: Framework UI multiplataforma
-- **Tokio**: Runtime assíncrono
-- **Chrono**: Manipulação de datas
-- **UUID**: Identificadores únicos
+- **Rust**: Primary language
+- **Dioxus**: Cross-platform UI framework
+- **Tokio**: Async runtime
+- **Chrono**: Date handling
+- **UUID**: Unique identifiers
 
-## 📝 Licença
+## 📝 License
 
 MIT
-

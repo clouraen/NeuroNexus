@@ -1,152 +1,154 @@
-# Guia de Testes - NeuroNexus
+# Testing Guide - NeuroNexus
 
-## ✅ Status da Compilação
+> 🌐 **[Português](docs/pt/TESTING.md)** | **[中文](docs/zh/TESTING.md)**
 
-- **Dioxus 0.7**: ✅ Atualizado e funcionando
-- **Compilação**: ✅ Sucesso (apenas 3 warnings menores)
-- **Build Release**: ✅ Funcionando
+## ✅ Build Status
 
-## 🚀 Como Executar
+- **Dioxus 0.7**: ✅ Updated and working
+- **Compilation**: ✅ Success (only 3 minor warnings)
+- **Release Build**: ✅ Working
 
-### Pré-requisitos
+## 🚀 How to Run
+
+### Prerequisites
 
 ```bash
-# 1. Instalar target WASM (necessário para web)
+# 1. Install WASM target (required for web)
 rustup target add wasm32-unknown-unknown
 
-# 2. Instalar Dioxus CLI (se ainda não tiver)
+# 2. Install Dioxus CLI (if you don't have it yet)
 cargo install dioxus-cli
 ```
 
-### Desenvolvimento
+### Development
 
-#### Modo Web
+#### Web Mode
 
 ```bash
-# Método 1: Usando Dioxus CLI (Recomendado para web)
+# Method 1: Using Dioxus CLI (Recommended for web)
 cd crates/app
 dx serve
 
-# Método 2: Se dx não estiver no PATH
+# Method 2: If dx is not in PATH
 cd crates/app
 ~/.cargo/bin/dx serve
 
-# Nota: Para web, não use `cargo run` diretamente - use `dx serve`
+# Note: For web, don't use `cargo run` directly - use `dx serve`
 ```
 
-#### Modo Desktop
+#### Desktop Mode
 
 ```bash
-# Executar aplicação desktop
+# Run desktop application
 cd crates/app
 cargo run --features desktop
 
-# Ou do workspace root
+# Or from workspace root
 cargo run --bin app --features desktop
 ```
 
-A aplicação desktop abrirá em uma janela nativa.
+The desktop app will open in a native window.
 
-A aplicação será servida automaticamente. Aguarde a mensagem no terminal indicando a URL (geralmente `http://localhost:8080`).
+The application will be served automatically. Wait for the terminal message indicating the URL (usually `http://localhost:8080`).
 
-**O que acontece:**
-1. 🔨 Compilação inicial (pode levar 30-60 segundos na primeira vez)
-2. 🌐 Servidor web inicia automaticamente
-3. 🔄 Hot-reload ativo (mudanças no código atualizam automaticamente)
-4. 📱 Aplicação disponível no navegador
+**What happens:**
+1. 🔨 Initial compilation (may take 30-60 seconds the first time)
+2. 🌐 Web server starts automatically
+3. 🔄 Hot-reload active (code changes update automatically)
+4. 📱 Application available in browser
 
-### Build de Release
+### Release Build
 
 ```bash
-# Build otimizado (mais lento, mas otimizado)
+# Optimized build (slower, but optimized)
 cargo build --bin app --release
 
-# Executar o binário de release
+# Run the release binary
 ./target/release/app
 ```
 
-**Quando usar release:**
-- ✅ Teste de performance
-- ✅ Deploy para produção
-- ✅ Distribuição do binário
+**When to use release:**
+- ✅ Performance testing
+- ✅ Production deployment
+- ✅ Binary distribution
 
-### Verificar Status
+### Check Status
 
 ```bash
-# Verificar se o servidor está rodando
-lsof -ti:8080 && echo "✅ Servidor ativo" || echo "❌ Servidor não encontrado"
+# Check if server is running
+lsof -ti:8080 && echo "✅ Server active" || echo "❌ Server not found"
 
-# Ver processos do cargo
+# View cargo processes
 ps aux | grep cargo | grep -v grep
 ```
 
-### Parar o Servidor
+### Stop the Server
 
-Pressione `Ctrl+C` no terminal onde o cargo está executando.
+Press `Ctrl+C` in the terminal where cargo is running.
 
-## 📋 Checklist de Testes
+## 📋 Testing Checklist
 
-### Navegação
-- [ ] Home carrega corretamente
-- [ ] Navegação entre tabs funciona
-- [ ] Router redireciona corretamente
-- [ ] Links funcionam
+### Navigation
+- [ ] Home loads correctly
+- [ ] Tab navigation works
+- [ ] Router redirects correctly
+- [ ] Links work
 
-### Páginas
-- [ ] **Home**: Estatísticas carregam (redações, questões, trilhas)
-- [ ] **Questões**: Lista de questões aparece
-- [ ] **Questões**: Busca funciona
-- [ ] **Questão Detail**: Carrega questão correta
-- [ ] **Questão Detail**: Alternativas funcionam
-- [ ] **Questão Detail**: Explicação aparece ao responder
-- [ ] **Redações**: Lista de redações aparece
-- [ ] **Redação Detail**: Carrega redação correta
-- [ ] **Nova Redação**: Editor funciona
-- [ ] **Nova Redação**: Salvar funciona
-- [ ] **Perfil**: Carrega informações
+### Pages
+- [ ] **Home**: Statistics load (essays, questions, trails)
+- [ ] **Questions**: Question list appears
+- [ ] **Questions**: Search works
+- [ ] **Question Detail**: Loads correct question
+- [ ] **Question Detail**: Alternatives work
+- [ ] **Question Detail**: Explanation appears on answer
+- [ ] **Essays**: Essay list appears
+- [ ] **Essay Detail**: Loads correct essay
+- [ ] **New Essay**: Editor works
+- [ ] **New Essay**: Save works
+- [ ] **Profile**: Loads information
 
-### Funcionalidades
-- [ ] Seeders populam dados corretamente
-- [ ] Busca de questões filtra resultados
-- [ ] Estados reativos funcionam (Signals)
-- [ ] Eventos de input funcionam
-- [ ] Links de navegação funcionam
+### Functionalities
+- [ ] Seeders populate data correctly
+- [ ] Question search filters results
+- [ ] Reactive states work (Signals)
+- [ ] Input events work
+- [ ] Navigation links work
 
 ### UI/UX
-- [ ] Tema cyberpunk aplicado
-- [ ] Cores neon visíveis
-- [ ] Efeitos glow funcionam
-- [ ] Responsividade básica
-- [ ] Loading states aparecem
+- [ ] Cyberpunk theme applied
+- [ ] Neon colors visible
+- [ ] Glow effects work
+- [ ] Basic responsiveness
+- [ ] Loading states appear
 
-## 🐛 Problemas Conhecidos
+## 🐛 Known Issues
 
-1. **NeonInput**: Eventos de input podem precisar ajustes finos
-2. **Textarea**: Editor de redação pode precisar melhorias
-3. **Performance**: Listas grandes podem precisar paginação
+1. **NeonInput**: Input events may need fine-tuning
+2. **Textarea**: Essay editor may need improvements
+3. **Performance**: Large lists may need pagination
 
-## 📝 Notas
+## 📝 Notes
 
-- A aplicação usa repositórios em memória (dados são perdidos ao recarregar)
-- Seeders são executados na inicialização
-- Todos os dados são carregados de forma assíncrona
+- App uses in-memory repositories (data is lost on reload)
+- Seeders run on initialization
+- All data is loaded asynchronously
 
 ## 🔧 Debug
 
 ```bash
-# Ver logs de compilação
+# View compilation logs
 cargo build --bin app --verbose
 
-# Verificar dependências
+# Check dependencies
 cargo tree --bin app
 
-# Limpar e recompilar
+# Clean and recompile
 cargo clean && cargo build --bin app
 
-# Instalar target WASM (necessário para web)
+# Install WASM target (required for web)
 rustup target add wasm32-unknown-unknown
 
-# Verificar targets instalados
+# Check installed targets
 rustup target list --installed
 ```
 

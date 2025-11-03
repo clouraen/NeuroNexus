@@ -38,125 +38,125 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 - **Tema**: Cyberpunk
 - **Configurações**: Notificações habilitadas, lembretes de estudo ativos
 
-### Questões (11 questões)
+### Questions (11 questions)
 
-#### Matemática (3 questões)
-1. **Função Quadrática** (Médio) - ID: `10000000-0000-0000-0000-000000000001`
-   - Envolve raízes e coeficientes de função quadrática
-   - Explicação detalhada da resolução
+#### Mathematics (3 questions)
+1. **Quadratic Function** (Medium) - ID: `10000000-0000-0000-0000-000000000001`
+   - Involves roots and coefficients of quadratic function
+   - Detailed solution explanation
 
-2. **Equação do Primeiro Grau** (Fácil) - ID: `10000000-0000-0000-0000-000000000002`
-   - Equação simples: 2x + 5 = 15
-   - Ideal para iniciantes
+2. **First Degree Equation** (Easy) - ID: `10000000-0000-0000-0000-000000000002`
+   - Simple equation: 2x + 5 = 15
+   - Ideal for beginners
 
-3. **Logaritmos** (Difícil) - ID: `10000000-0000-0000-0000-000000000003`
-   - Equação logarítmica com propriedades
-   - Requer conhecimento avançado
+3. **Logarithms** (Hard) - ID: `10000000-0000-0000-0000-000000000003`
+   - Logarithmic equation with properties
+   - Requires advanced knowledge
 
-#### História (2 questões)
-1. **Descobrimento do Brasil** (Fácil) - ID: `20000000-0000-0000-0000-000000000001`
-   - Data do descobrimento por Cabral
-   - Contexto histórico
+#### History (2 questions)
+1. **Discovery of Brazil** (Easy) - ID: `20000000-0000-0000-0000-000000000001`
+   - Date of discovery by Cabral
+   - Historical context
 
-2. **Inconfidência Mineira** (Médio) - ID: `20000000-0000-0000-0000-000000000002`
-   - Motivos e contexto histórico
-   - Período colonial brasileiro
+2. **Inconfidência Mineira** (Medium) - ID: `20000000-0000-0000-0000-000000000002`
+   - Motives and historical context
+   - Brazilian colonial period
 
-#### Física (2 questões)
-1. **Lançamento Vertical** (Médio) - ID: `30000000-0000-0000-0000-000000000001`
-   - Cinemática: altura máxima
-   - Uso da equação de Torricelli
+#### Physics (2 questions)
+1. **Vertical Launch** (Medium) - ID: `30000000-0000-0000-0000-000000000001`
+   - Kinematics: maximum height
+   - Use of Torricelli's equation
 
-2. **Capacitores** (Difícil) - ID: `30000000-0000-0000-0000-000000000002`
-   - Eletricidade: associação de capacitores
-   - Conservação de carga
+2. **Capacitors** (Hard) - ID: `30000000-0000-0000-0000-000000000002`
+   - Electricity: capacitor association
+   - Charge conservation
 
-#### Química (1 questão)
-1. **pH de Ácido Forte** (Médio) - ID: `40000000-0000-0000-0000-000000000001`
-   - Cálculo de pH
-   - Dissociação completa
+#### Chemistry (1 question)
+1. **pH of Strong Acid** (Medium) - ID: `40000000-0000-0000-0000-000000000001`
+   - pH calculation
+   - Complete dissociation
 
-#### Biologia (1 questão)
-1. **Fotossíntese** (Médio) - ID: `50000000-0000-0000-0000-000000000001`
-   - Organelas celulares
-   - Processo fotossintético
+#### Biology (1 question)
+1. **Photosynthesis** (Medium) - ID: `50000000-0000-0000-0000-000000000001`
+   - Cell organelles
+   - Photosynthetic process
 
-#### Literatura (1 questão)
-1. **Machado de Assis** (Médio) - ID: `60000000-0000-0000-0000-000000000001`
-   - Obra mais conhecida
-   - Literatura brasileira
+#### Literature (1 question)
+1. **Machado de Assis** (Medium) - ID: `60000000-0000-0000-0000-000000000001`
+   - Best-known work
+   - Brazilian literature
 
-#### Geografia (1 questão)
-1. **Biomas Brasileiros** (Fácil) - ID: `70000000-0000-0000-0000-000000000001`
-   - Maior bioma do Brasil
-   - Geografia física
+#### Geography (1 question)
+1. **Brazilian Biomes** (Easy) - ID: `70000000-0000-0000-0000-000000000001`
+   - Largest biome in Brazil
+   - Physical geography
 
-#### Português (1 questão)
-1. **Acentuação Ortográfica** (Médio) - ID: `80000000-0000-0000-0000-000000000001`
-   - Acordo Ortográfico de 2009
-   - Mudanças na acentuação
+#### Portuguese (1 question)
+1. **Orthographic Accentuation** (Medium) - ID: `80000000-0000-0000-0000-000000000001`
+   - 2009 Orthographic Agreement
+   - Changes in accentuation
 
-### Redações (4 redações)
+### Essays (4 essays)
 
-1. **ENEM - Desafios da Educação Digital** (Em Progresso)
+1. **ENEM - Digital Education Challenges** (In Progress)
    - ID: `a0000000-0000-0000-0000-000000000001`
-   - Tema atual sobre educação digital
-   - Status: Em progresso
+   - Current topic on digital education
+   - Status: In progress
 
-2. **ENEM - Evasão Escolar** (Corrigida)
+2. **ENEM - School Dropout** (Graded)
    - ID: `a0000000-0000-0000-0000-000000000002`
    - Score: 820/1000
-   - Feedback detalhado por competência
-   - Rubric scores completos
+   - Detailed feedback by competency
+   - Complete rubric scores
 
-3. **FUVEST - Tecnologia** (Em Progresso)
+3. **FUVEST - Technology** (In Progress)
    - ID: `a0000000-0000-0000-0000-000000000003`
-   - Redação iniciada
+   - Essay started
    - Max score: 48
 
-4. **UNICAMP - Sustentabilidade** (Corrigida)
+4. **UNICAMP - Sustainability** (Graded)
    - ID: `a0000000-0000-0000-0000-000000000004`
    - Score: 52/60
-   - Artigo de opinião
-   - Feedback positivo
+   - Opinion article
+   - Positive feedback
 
-### Trilhas de Conhecimento (3 trilhas)
+### Knowledge Trails (3 trails)
 
-1. **Fundamentos de Matemática**
+1. **Mathematics Fundamentals**
    - ID: `b0000000-0000-0000-0000-000000000001`
-   - Progresso: 0%
-   - 2 módulos (Álgebra Básica, Funções Quadráticas)
-   - Dificuldade: Médio
-   - Estimativa: 20 horas
+   - Progress: 0%
+   - 2 modules (Basic Algebra, Quadratic Functions)
+   - Difficulty: Medium
+   - Estimated: 20 hours
 
-2. **História do Brasil**
+2. **Brazilian History**
    - ID: `b0000000-0000-0000-0000-000000000002`
-   - Progresso: 30%
-   - 2 módulos (1 completo, 1 pendente)
-   - Dificuldade: Médio
-   - Estimativa: 15 horas
+   - Progress: 30%
+   - 2 modules (1 complete, 1 pending)
+   - Difficulty: Medium
+   - Estimated: 15 hours
 
-3. **Física Mecânica**
+3. **Mechanical Physics**
    - ID: `b0000000-0000-0000-0000-000000000003`
-   - Progresso: 0%
-   - 1 módulo (Cinemática)
-   - Dificuldade: Difícil
-   - Estimativa: 25 horas
+   - Progress: 0%
+   - 1 module (Kinematics)
+   - Difficulty: Hard
+   - Estimated: 25 hours
 
-## Características dos Dados
+## Data Characteristics
 
-- **Realistas**: Todas as questões têm enunciados, alternativas e explicações detalhadas baseadas em conteúdo real de vestibulares
-- **Diversificados**: Cobrem múltiplas matérias e níveis de dificuldade
-- **Completos**: Redações incluem feedbacks, scores e rubric scores quando corrigidas
-- **Estruturados**: Trilhas têm módulos bem definidos com progresso
+- **Realistic**: All questions have statements, alternatives and detailed explanations based on real college entrance exam content
+- **Diverse**: Cover multiple subjects and difficulty levels
+- **Complete**: Essays include feedback, scores and rubric scores when graded
+- **Structured**: Trails have well-defined modules with progress
 
-## Personalização
+## Customization
 
-Você pode criar seus próprios seeders usando as funções auxiliares:
+You can create your own seeders using the helper functions:
 
 ```rust
 use data::seeders::{seed_user, seed_questions, seed_essays, seed_knowledge_trails};
 ```
 
-Ou criar dados individuais usando as estruturas do domínio diretamente.
+Or create individual data using domain structures directly.
 
