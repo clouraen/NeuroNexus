@@ -1,0 +1,156 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "title": "Fundamentos de Matemática para ENEM",
+    "description": "Trilha completa cobrindo os fundamentos matemáticos necessários para o ENEM, incluindo álgebra, geometria e estatística básica.",
+    "focus_areas": ["MATEMATICA"],
+    "progress": 0,
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "title": "Álgebra Básica",
+        "description": "Introdução a equações de primeiro e segundo grau",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000000",
+        "order": 0,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000002",
+        "title": "Geometria Plana",
+        "description": "Estudo de áreas e perímetros de figuras geométricas",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000010",
+        "order": 1,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000003",
+        "title": "Estatística Descritiva",
+        "description": "Média, mediana, moda e desvio padrão",
+        "content_type": "PracticeTest",
+        "content_id": "00000000-0000-0000-0000-000000000020",
+        "order": 2,
+        "completed": false
+      }
+    ],
+    "estimated_hours": 40,
+    "difficulty_level": "Medio"
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000100",
+    "title": "Português Completo ENEM",
+    "description": "Domínio completo da Língua Portuguesa incluindo gramática, interpretação de textos e redação.",
+    "focus_areas": ["LINGUA_PORTUGUESA", "LITERATURA"],
+    "progress": 0,
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000101",
+        "title": "Gramática Essencial",
+        "description": "Revisão de sintaxe, morfologia e semântica",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000030",
+        "order": 0,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000102",
+        "title": "Interpretação de Textos",
+        "description": "Técnicas para compreensão e análise textual",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000001",
+        "order": 1,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000103",
+        "title": "Redação ENEM",
+        "description": "Estrutura e técnicas de redação dissertativa-argumentativa",
+        "content_type": "Essay",
+        "content_id": "00000000-0000-0000-0000-000000000040",
+        "order": 2,
+        "completed": false
+      }
+    ],
+    "estimated_hours": 60,
+    "difficulty_level": "Medio"
+  }
+]
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "title": "Fundamentos de Matemática para ENEM",
+    "description": "Trilha completa cobrindo os fundamentos matemáticos necessários para o ENEM, incluindo álgebra, geometria e estatística básica.",
+    "focus_areas": ["MATEMATICA"],
+    "progress": 0,
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "title": "Álgebra Básica",
+        "description": "Introdução a equações de primeiro e segundo grau",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000000",
+        "order": 0,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000002",
+        "title": "Geometria Plana",
+        "description": "Estudo de áreas e perímetros de figuras geométricas",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000010",
+        "order": 1,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000003",
+        "title": "Estatística Descritiva",
+        "description": "Média, mediana, moda e desvio padrão",
+        "content_type": "PracticeTest",
+        "content_id": "00000000-0000-0000-0000-000000000020",
+        "order": 2,
+        "completed": false
+      }
+    ],
+    "estimated_hours": 40,
+    "difficulty_level": "Medio"
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000100",
+    "title": "Português Completo ENEM",
+    "description": "Domínio completo da Língua Portuguesa incluindo gramática, interpretação de textos e redação.",
+    "focus_areas": ["LINGUA_PORTUGUESA", "LITERATURA"],
+    "progress": 0,
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000101",
+        "title": "Gramática Essencial",
+        "description": "Revisão de sintaxe, morfologia e semântica",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000030",
+        "order": 0,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000102",
+        "title": "Interpretação de Textos",
+        "description": "Técnicas para compreensão e análise textual",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000001",
+        "order": 1,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000103",
+        "title": "Redação ENEM",
+        "description": "Estrutura e técnicas de redação dissertativa-argumentativa",
+        "content_type": "Essay",
+        "content_id": "00000000-0000-0000-0000-000000000040",
+        "order": 2,
+        "completed": false
+      }
+    ],
+    "estimated_hours": 60,
+    "difficulty_level": "Medio"
+  }
+]

@@ -1,0 +1,28 @@
+[package]
+name = "app"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "app"
+path = "src/main.rs"
+
+[features]
+default = ["web"]
+web = []
+desktop = ["dioxus/desktop"]
+
+[dependencies]
+domain = { path = "../domain" }
+data = { path = "../data" }
+shared = { path = "../shared" }
+dioxus = { workspace = true, features = ["web"] }
+dioxus-router.workspace = true
+dioxus-web.workspace = true
+dioxus-desktop.workspace = true
+uuid.workspace = true
+serde.workspace = true
+chrono.workspace = true
+web-sys = { version = "0.3", features = ["HtmlInputElement", "EventTarget"] }
+wasm-bindgen = "0.2"
+wasm-bindgen-futures = "0.4"

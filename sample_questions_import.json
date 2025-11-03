@@ -1,0 +1,166 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "subject": "MATEMATICA",
+    "difficulty": "Medio",
+    "statement": "Qual é o valor de x na equação 2x + 5 = 15?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "x = 3"
+      },
+      {
+        "id": 1,
+        "text": "x = 5"
+      },
+      {
+        "id": 2,
+        "text": "x = 7"
+      },
+      {
+        "id": 3,
+        "text": "x = 10"
+      }
+    ],
+    "correct_answer": 1,
+    "explanation": "Para resolver a equação 2x + 5 = 15, primeiro subtraímos 5 de ambos os lados: 2x = 10. Depois dividimos por 2: x = 5.",
+    "tags": ["algebra", "equacoes", "primeiro-grau"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "subject": "LINGUA_PORTUGUESA",
+    "difficulty": "Facil",
+    "statement": "Qual é a função sintática do termo sublinhado na frase: 'O aluno **estudou** para a prova'?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "Sujeito"
+      },
+      {
+        "id": 1,
+        "text": "Predicado verbal"
+      },
+      {
+        "id": 2,
+        "text": "Objeto direto"
+      },
+      {
+        "id": 3,
+        "text": "Adjunto adverbial"
+      }
+    ],
+    "correct_answer": 1,
+    "explanation": "O verbo 'estudou' é o núcleo do predicado verbal, que indica a ação praticada pelo sujeito 'O aluno'.",
+    "tags": ["sintaxe", "analise-sintatica", "predicado"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "subject": "HISTORIA",
+    "difficulty": "Dificil",
+    "statement": "Qual evento marcou o início da Revolução Francesa em 1789?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "A execução de Luís XVI"
+      },
+      {
+        "id": 1,
+        "text": "A Queda da Bastilha"
+      },
+      {
+        "id": 2,
+        "text": "A Declaração dos Direitos do Homem"
+      },
+      {
+        "id": 3,
+        "text": "O Golpe do 18 Brumário"
+      }
+    ],
+    "correct_answer": 1,
+    "explanation": "A Queda da Bastilha em 14 de julho de 1789 é considerada o marco inicial da Revolução Francesa, simbolizando a luta do povo contra o absolutismo monárquico.",
+    "tags": ["revolucao-francesa", "historia-moderna", "franca"]
+  }
+]
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "subject": "MATEMATICA",
+    "difficulty": "Medio",
+    "statement": "Qual é o valor de x na equação 2x + 5 = 15?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "x = 3"
+      },
+      {
+        "id": 1,
+        "text": "x = 5"
+      },
+      {
+        "id": 2,
+        "text": "x = 7"
+      },
+      {
+        "id": 3,
+        "text": "x = 10"
+      }
+    ],
+    "correct_answer": 1,
+    "explanation": "Para resolver a equação 2x + 5 = 15, primeiro subtraímos 5 de ambos os lados: 2x = 10. Depois dividimos por 2: x = 5.",
+    "tags": ["algebra", "equacoes", "primeiro-grau"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "subject": "LINGUA_PORTUGUESA",
+    "difficulty": "Facil",
+    "statement": "Qual é a função sintática do termo sublinhado na frase: 'O aluno **estudou** para a prova'?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "Sujeito"
+      },
+      {
+        "id": 1,
+        "text": "Predicado verbal"
+      },
+      {
+        "id": 2,
+        "text": "Objeto direto"
+      },
+      {
+        "id": 3,
+        "text": "Adjunto adverbial"
+      }
+    ],
+    "correct_answer": 1,
+    "explanation": "O verbo 'estudou' é o núcleo do predicado verbal, que indica a ação praticada pelo sujeito 'O aluno'.",
+    "tags": ["sintaxe", "analise-sintatica", "predicado"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "subject": "HISTORIA",
+    "difficulty": "Dificil",
+    "statement": "Qual evento marcou o início da Revolução Francesa em 1789?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "A execução de Luís XVI"
+      },
+      {
+        "id": 1,
+        "text": "A Queda da Bastilha"
+      },
+      {
+        "id": 2,
+        "text": "A Declaração dos Direitos do Homem"
+      },
+      {
+        "id": 3,
+        "text": "O Golpe do 18 Brumário"
+      }
+    ],
+    "correct_answer": 1,
+    "explanation": "A Queda da Bastilha em 14 de julho de 1789 é considerada o marco inicial da Revolução Francesa, simbolizando a luta do povo contra o absolutismo monárquico.",
+    "tags": ["revolucao-francesa", "historia-moderna", "franca"]
+  }
+]

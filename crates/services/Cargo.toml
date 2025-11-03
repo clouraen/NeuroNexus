@@ -1,0 +1,15 @@
+[package]
+name = "services"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+domain = { path = "../domain" }
+shared = { path = "../shared" }
+uuid.workspace = true
+serde.workspace = true
+chrono.workspace = true
+async-trait.workspace = true
+anyhow.workspace = true
+tokio.workspace = true
+
