@@ -7,6 +7,9 @@ use std::sync::Arc;
 use tokenizers::Tokenizer;
 use tokio::sync::RwLock;
 
+/// Progress callback for model loading
+pub type ProgressCallback = Arc<dyn Fn(f32, String) + Send + Sync>;
+
 /// AI Service for essay evaluation using BERTimbau model
 #[derive(Clone)]
 pub struct AIService {
@@ -29,14 +32,33 @@ impl AIService {
 
     /// Initialize the model by loading from local cache or downloading from HuggingFace
     pub async fn initialize(&self) -> Result<()> {
+        self.initialize_with_progress(None).await
+    }
+
+    /// Initialize the model with progress callback
+    pub async fn initialize_with_progress(
+        &self,
+        progress_callback: Option<ProgressCallback>,
+    ) -> Result<()> {
         // Check if already initialized
         if self.model.read().await.is_some() {
+            if let Some(cb) = progress_callback {
+                cb(1.0, "Model already loaded".to_string());
+            }
             return Ok(());
         }
 
+        let report_progress = |progress: f32, message: String| {
+            if let Some(ref cb) = progress_callback {
+                cb(progress, message);
+            }
+        };
+
+        report_progress(0.0, "Starting model initialization...".to_string());
         tracing::info!("Initializing BERTimbau model...");
 
         // Download or load from cache
+        report_progress(0.1, "Connecting to model repository...".to_string());
         let api = Api::new()?;
         let repo = api.repo(Repo::new(
             "neuralmind/bert-base-portuguese-cased".to_string(),
@@ -44,29 +66,45 @@ impl AIService {
         ));
 
         // Get model files
+        report_progress(0.2, "Downloading configuration...".to_string());
         let config_path = repo.get("config.json")?;
+        
+        report_progress(0.3, "Downloading tokenizer...".to_string());
         let tokenizer_path = repo.get("tokenizer.json")?;
+        
+        report_progress(0.4, "Downloading model weights...".to_string());
         let weights_path = repo.get("pytorch_model.bin")?;
 
         // Load tokenizer
+        report_progress(0.6, "Loading tokenizer...".to_string());
         let tokenizer = Tokenizer::from_file(tokenizer_path)
             .map_err(|e| anyhow::anyhow!("Failed to load tokenizer: {}", e))?;
 
         // Load model configuration
+        report_progress(0.7, "Loading model configuration...".to_string());
         let config: BertConfig = serde_json::from_str(
             &std::fs::read_to_string(config_path)?
         )?;
 
         // Load model weights
+        report_progress(0.8, "Loading model weights...".to_string());
         let vb = VarBuilder::from_pth(&weights_path, candle_core::DType::F32, &self.device)?;
+        
+        report_progress(0.9, "Initializing model...".to_string());
         let model = BertModel::load(vb, &config)?;
 
         // Store model and tokenizer
         *self.model.write().await = Some(model);
         *self.tokenizer.write().await = Some(tokenizer);
 
+        report_progress(1.0, "Model loaded successfully!".to_string());
         tracing::info!("BERTimbau model initialized successfully");
         Ok(())
+    }
+
+    /// Check if the model is already initialized
+    pub async fn is_initialized(&self) -> bool {
+        self.model.read().await.is_some()
     }
 
     /// Score an essay using the AI model
