@@ -28,12 +28,13 @@ pub enum Route {
 
 #[component]
 pub fn App() -> Element {
-    // Inicializar contexto e seeders
+    // Inicializar contexto e fornecer para a árvore de componentes
+    let ctx = use_context_provider(|| AppContext::new());
+    
+    // Popular dados de teste (async em background)
     use_effect(move || {
+        let ctx = ctx.clone();
         spawn(async move {
-            let ctx = AppContext::new();
-            
-            // Popular dados de teste (async em background)
             let _ = seed_all_data(
                 &*ctx.essay_repo,
                 &*ctx.question_repo,

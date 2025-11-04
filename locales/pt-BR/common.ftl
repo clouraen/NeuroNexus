@@ -24,6 +24,9 @@ common-status-success = Sucesso!
 common-status-error = Erro
 common-status-warning = Aviso
 common-status-info = Informação
+common-status-online = ONLINE
+common-status-offline = OFFLINE
+common-status-processing = Processando...
 
 # Common UI Elements - Messages
 common-message-no-data = Nenhum dado disponível
@@ -63,3 +66,28 @@ common-validation-required = Este campo é obrigatório
 common-validation-min-length = Mínimo de { $min } caracteres
 common-validation-max-length = Máximo de { $max } caracteres
 common-validation-numeric = Por favor, insira um número
+
+# Import Modal - Component Specific
+import-modal-title = IMPORTAR DADOS
+import-modal-close = Fechar
+import-modal-description = Selecione o tipo de dados que deseja importar:
+import-modal-questions-title = Questões de Exame
+import-modal-questions-desc = Importar questões no formato JSON
+import-modal-trails-title = Trilhas de Aprendizado
+import-modal-trails-desc = Importar trilhas no formato JSON
+import-modal-processing = Importando dados...
+import-modal-success = { $count } itens importados com sucesso
+import-modal-partial-success = Importados { $success } de { $total } itens. { $errors } erros encontrados.
+import-modal-error-no-type = Nenhum tipo de importação selecionado
+import-modal-error-read-file = Falha ao ler arquivo
+import-modal-error-invalid-json = Formato JSON inválido: { $error }
+
+# Status Bar - Component Specific
+status-bar-logo = NEURONEXUS
+status-bar-timer-title = Clique para iniciar/pausar | Botão direito para resetar
+status-bar-online = ONLINE
+status-bar-version = v{ $version }
+
+# Toggle - Component Specific
+toggle-enable-title = Clique para ativar
+toggle-disable-title = Clique para desativar

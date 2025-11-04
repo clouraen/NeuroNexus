@@ -22,3 +22,8 @@ nav-tabbar-label-profile = Profile
 # Navigation - Breadcrumbs
 nav-breadcrumb-home = Home
 nav-breadcrumb-back = Back
+
+# Navigation Menu - Component Specific
+nav-menu-main-section = MAIN
+nav-menu-tools-section = TOOLS
+nav-menu-coming-soon = Coming soon...

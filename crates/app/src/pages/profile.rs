@@ -42,10 +42,10 @@ pub fn Profile() -> Element {
                                     div {
                                         class: "profile-info",
                                         h2 {
-                                            "Estudante"
+                                            "{ctx.t(\"profile-personal-student\")}"
                                         }
                                         p {
-                                            "estudante@neuronexus.app"
+                                            "{ctx.t(\"profile-personal-default-email\")}"
                                         }
                                     }
                                 }

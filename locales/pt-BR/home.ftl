@@ -8,6 +8,7 @@ home-stats-questions = Questões Respondidas
 home-stats-essays = Redações Escritas
 home-stats-study-time = Tempo de Estudo
 home-stats-streak = Dias de Sequência
+home-stats-trails = Trilhas Ativas
 
 # Home/Dashboard - Recent Activity
 home-recent-title = Atividade Recente

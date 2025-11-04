@@ -67,7 +67,7 @@ pub fn Home() -> Element {
                             }
                             div {
                                 class: "stat-label",
-                                "Trilhas Ativas"
+                                "{ctx.t(\"home-stats-trails\")}"
                             }
                         }
                     }

@@ -1,8 +1,11 @@
 use dioxus::prelude::*;
+use dioxus::prelude::*;
 use super::BrainIcon;
+use crate::context::AppContext;
 
 #[component]
 pub fn StatusBar() -> Element {
+    let ctx = use_context::<AppContext>();
     let timer_seconds = use_signal(|| 0u32);
     let is_active = use_signal(|| false);
     
@@ -59,7 +62,7 @@ pub fn StatusBar() -> Element {
                     class: "{timer_class}",
                     onclick: toggle_timer,
                     oncontextmenu: reset_timer,
-                    title: "Clique para iniciar/pausar | Botão direito para resetar",
+                    title: "{ctx.t(\"status-bar-timer-tooltip\")}",
                     "{format_time(timer_seconds())}"
                 }
             }

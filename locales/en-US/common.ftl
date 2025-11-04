@@ -24,6 +24,9 @@ common-status-success = Success!
 common-status-error = Error
 common-status-warning = Warning
 common-status-info = Information
+common-status-online = ONLINE
+common-status-offline = OFFLINE
+common-status-processing = Processing...
 
 # Common UI Elements - Messages
 common-message-no-data = No data available
@@ -63,3 +66,28 @@ common-validation-required = This field is required
 common-validation-min-length = Minimum { $min } characters
 common-validation-max-length = Maximum { $max } characters
 common-validation-numeric = Please enter a number
+
+# Import Modal - Component Specific
+import-modal-title = IMPORT DATA
+import-modal-close = Close
+import-modal-description = Select the type of data you want to import:
+import-modal-questions-title = Exam Questions
+import-modal-questions-desc = Import questions in JSON format
+import-modal-trails-title = Learning Trails
+import-modal-trails-desc = Import trails in JSON format
+import-modal-processing = Importing data...
+import-modal-success = Successfully imported { $count } items
+import-modal-partial-success = Imported { $success } of { $total } items. { $errors } errors encountered.
+import-modal-error-no-type = No import type selected
+import-modal-error-read-file = Failed to read file
+import-modal-error-invalid-json = Invalid JSON format: { $error }
+
+# Status Bar - Component Specific
+status-bar-logo = NEURONEXUS
+status-bar-timer-title = Click to start/pause | Right-click to reset
+status-bar-online = ONLINE
+status-bar-version = v{ $version }
+
+# Toggle - Component Specific
+toggle-enable-title = Click to enable
+toggle-disable-title = Click to disable

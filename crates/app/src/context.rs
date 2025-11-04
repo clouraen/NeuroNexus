@@ -1,4 +1,4 @@
-use std::sync::{Arc, Mutex};
+use std::sync::{Arc, Mutex, RwLock};
 use data::{
     InMemoryEssayRepository, InMemoryQuestionRepository,
     InMemoryUserRepository, InMemoryKnowledgeTrailRepository,
@@ -17,6 +17,7 @@ pub struct AppContext {
     pub rubric_repo: Arc<InMemoryExamRubricRepository>,
     pub current_user_id: Uuid,
     pub translator: Arc<Mutex<Translator>>,
+    pub current_locale: Arc<RwLock<String>>,
 }
 
 impl AppContext {
@@ -34,8 +35,10 @@ impl AppContext {
         // Initialize translator with detected system locale
         let locale = LocaleDetector::detect_system_locale();
         let translator = Arc::new(Mutex::new(
-            Translator::new(locale, "./locales")
+            Translator::new(locale.clone(), "./locales")
         ));
+        
+        let current_locale = Arc::new(RwLock::new(locale));
         
         Self {
             essay_repo,
@@ -45,6 +48,7 @@ impl AppContext {
             rubric_repo,
             current_user_id,
             translator,
+            current_locale,
         }
     }
     
@@ -62,16 +66,15 @@ impl AppContext {
             .lock()
             .unwrap()
             .set_locale(locale)
-            .map_err(|e| format!("{}", e))
+            .map_err(|e| format!("{}", e))?;
+        
+        *self.current_locale.write().unwrap() = locale.to_string();
+        Ok(())
     }
     
     /// Get the current locale
     pub fn current_locale(&self) -> String {
-        self.translator
-            .lock()
-            .unwrap()
-            .current_locale()
-            .to_string()
+        self.current_locale.read().unwrap().clone()
     }
 }
 

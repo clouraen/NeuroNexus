@@ -45,3 +45,20 @@ domain-exam-ufc = UFC
 domain-exam-ufpa = UFPA
 domain-exam-ufam = UFAM
 domain-exam-other = Other
+
+# Import Modal - Headers and Messages
+import-modal-title = Import Data
+import-modal-questions-title = Exam Questions
+import-modal-questions-desc = Import questions in JSON format
+import-modal-trails-title = Learning Trails
+import-modal-trails-desc = Import trails in JSON format
+import-modal-select-file = Select File
+import-modal-importing = Importing data...
+import-modal-success = Successfully imported { $count } items
+import-modal-partial-success = Imported { $success } of { $total } items. { $errors } errors encountered.
+import-modal-error = Invalid JSON format: { $error }
+
+# Toggle and Status Bar
+toggle-tooltip-enable = Click to enable
+toggle-tooltip-disable = Click to disable
+status-bar-timer-tooltip = Click to start/pause | Right-click to reset

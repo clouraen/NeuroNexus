@@ -13,6 +13,8 @@ profile-personal-name = Nome
 profile-personal-email = Email
 profile-personal-joined = Membro desde
 profile-personal-edit = Editar Perfil
+profile-personal-student = Estudante
+profile-personal-default-email = estudante@neuronexus.app
 
 # Profile Page - Statistics
 profile-stats-total-questions = Total de Questões
