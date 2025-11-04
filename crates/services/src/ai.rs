@@ -48,6 +48,7 @@ impl AIService {
             return Ok(());
         }
 
+<<<<<<< Local
         let report_progress = |progress: f32, message: String| {
             if let Some(ref cb) = progress_callback {
                 cb(progress, message);
@@ -55,39 +56,84 @@ impl AIService {
         };
 
         report_progress(0.0, "Starting model initialization...".to_string());
+=======
+        let report_progress = |progress: f32, message: String| {
+            if let Some(ref cb) = progress_callback {
+                cb(progress, message);
+            }
+        };
+
+        report_progress(0.0, LoadingStage::Validating.as_str().to_string());
+>>>>>>> Remote
         tracing::info!("Initializing BERTimbau model...");
 
+        // Get token if configured (for future downloads)
+        // Note: hf-hub 0.3 uses HF_TOKEN environment variable for authentication
+        // Token is stored in config but environment variable takes precedence
+        let _token = self.config_manager.get_token()?;
+
         // Download or load from cache
+<<<<<<< Local
         report_progress(0.1, "Connecting to model repository...".to_string());
+=======
+        report_progress(0.1, LoadingStage::Connecting.as_str().to_string());
+>>>>>>> Remote
         let api = Api::new()?;
+        
         let repo = api.repo(Repo::new(
             "neuralmind/bert-base-portuguese-cased".to_string(),
             RepoType::Model,
         ));
 
         // Get model files
+<<<<<<< Local
         report_progress(0.2, "Downloading configuration...".to_string());
+=======
+        report_progress(0.2, LoadingStage::DownloadingConfig.as_str().to_string());
+>>>>>>> Remote
         let config_path = repo.get("config.json")?;
+<<<<<<< Local
         
         report_progress(0.3, "Downloading tokenizer...".to_string());
+=======
+        
+        report_progress(0.4, LoadingStage::DownloadingTokenizer.as_str().to_string());
+>>>>>>> Remote
         let tokenizer_path = repo.get("tokenizer.json")?;
+<<<<<<< Local
         
         report_progress(0.4, "Downloading model weights...".to_string());
+=======
+        
+        report_progress(0.5, LoadingStage::DownloadingWeights.as_str().to_string());
+>>>>>>> Remote
         let weights_path = repo.get("pytorch_model.bin")?;
 
         // Load tokenizer
+<<<<<<< Local
         report_progress(0.6, "Loading tokenizer...".to_string());
+=======
+        report_progress(0.8, "Loading tokenizer...".to_string());
+>>>>>>> Remote
         let tokenizer = Tokenizer::from_file(tokenizer_path)
             .map_err(|e| anyhow::anyhow!("Failed to load tokenizer: {}", e))?;
 
         // Load model configuration
+<<<<<<< Local
         report_progress(0.7, "Loading model configuration...".to_string());
+=======
+        report_progress(0.85, "Loading model configuration...".to_string());
+>>>>>>> Remote
         let config: BertConfig = serde_json::from_str(
             &std::fs::read_to_string(config_path)?
         )?;
 
         // Load model weights
+<<<<<<< Local
         report_progress(0.8, "Loading model weights...".to_string());
+=======
+        report_progress(0.9, LoadingStage::LoadingModel.as_str().to_string());
+>>>>>>> Remote
         let vb = VarBuilder::from_pth(&weights_path, candle_core::DType::F32, &self.device)?;
         
         report_progress(0.9, "Initializing model...".to_string());
@@ -97,7 +143,14 @@ impl AIService {
         *self.model.write().await = Some(model);
         *self.tokenizer.write().await = Some(tokenizer);
 
+<<<<<<< Local
         report_progress(1.0, "Model loaded successfully!".to_string());
+=======
+        // Update last successful load timestamp
+        let _ = self.config_manager.update_last_load();
+
+        report_progress(1.0, LoadingStage::Complete.as_str().to_string());
+>>>>>>> Remote
         tracing::info!("BERTimbau model initialized successfully");
         Ok(())
     }

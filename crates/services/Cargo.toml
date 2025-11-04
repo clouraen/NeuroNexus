@@ -22,4 +22,6 @@ tokenizers = "0.20"
 hf-hub = { version = "0.3", features = ["tokio"] }
 tracing = "0.1"
 once_cell = "1.19"
+base64 = "0.21"
+dirs = "5.0"
 

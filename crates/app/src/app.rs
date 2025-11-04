@@ -34,9 +34,10 @@ pub enum Route {
 
 #[component]
 pub fn App() -> Element {
-    // Inicializar contexto e fornecer para a árvore de componentes
+    // Initialize context and provide to component tree
     let ctx = use_context_provider(|| AppContext::new());
     
+<<<<<<< Local
     // Clone context for different use_effects
     let ctx_for_ai = ctx.clone();
     let ctx_for_seeding = ctx.clone();
@@ -47,6 +48,9 @@ pub fn App() -> Element {
     let mut loading_message = use_signal(|| "Initializing AI model...".to_string());
     
     // Initialize AI model on startup
+=======
+    // Seed test data (async in background)
+>>>>>>> Remote
     use_effect(move || {
         let ctx_clone = ctx_for_ai.clone();
         spawn(async move {
@@ -129,6 +133,11 @@ pub fn App() -> Element {
             ).await;
         });
     });
+    
+    // Note: AI model initialization has been moved to the Profile/Settings page.
+    // Users configure their HuggingFace token and download the model on-demand.
+    // The model loads lazily when first used for essay evaluation.
+    // This improves startup time and gives users control over AI features.
     
     rsx! {
         style { {CSS} }
