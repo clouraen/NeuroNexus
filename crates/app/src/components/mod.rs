@@ -10,7 +10,7 @@ pub mod brain_icon;
 pub mod toggle;
 pub mod import_modal;
 
-pub use neon_button::NeonButton;
+pub use neon_button::{NeonButton, ButtonVariant};
 pub use neon_input::NeonInput;
 pub use cyber_card::CyberCard;
 pub use status_bar::StatusBar;

@@ -1,7 +1,7 @@
 use dioxus::prelude::*;
-use crate::components::*;
 use crate::context::AppContext;
 use domain::traits::EssayRepository;
+use domain::essay::EssayStatus;
 use uuid::Uuid;
 
 #[component]
@@ -53,28 +53,14 @@ pub fn EssayDetail(id: String) -> Element {
                                 }
                             }
                         }
-                        // Botão de avaliação
+                        // Botão de avaliação (temporariamente desabilitado)
                         if e.status != EssayStatus::Corrigida {
                             div {
                                 class: "evaluation-actions",
-                                button {
-                                    class: "neon-button",
-                                    disabled: is_evaluating(),
-                                    onclick: evaluate_essay,
-                                    if is_evaluating() {
-                                        "Avaliando..."
-                                    } else {
-                                        "✨ Avaliar Redação com IA"
-                                    }
+                                p {
+                                    style: "color: #888; margin-top: 10px;",
+                                    "Avaliação com IA em desenvolvimento"
                                 }
-                            }
-                        }
-                        // Mensagem de erro
-                        if let Some(error) = evaluation_error() {
-                            div {
-                                class: "error-message",
-                                style: "color: #ff4444; margin-top: 10px;",
-                                {error}
                             }
                         }
                     }

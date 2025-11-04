@@ -11,14 +11,15 @@ use uuid::Uuid;
 pub fn TrailDetail(trail_id: String) -> Element {
     let mut trail = use_signal(|| None);
     let ctx = use_context::<AppContext>();
+    let trail_id_for_view = trail_id.clone();
     
     // Load trail data
     use_effect(move || {
-        let trail_id_clone = trail_id.clone();
+        let trail_id_str = trail_id.clone();
         let trail_repo = ctx.trail_repo.clone();
         
         spawn(async move {
-            let trail_uuid = match Uuid::parse_str(&trail_id_clone) {
+            let trail_uuid = match Uuid::parse_str(&trail_id_str) {
                 Ok(uuid) => uuid,
                 Err(_) => return,
             };
@@ -89,7 +90,7 @@ pub fn TrailDetail(trail_id: String) -> Element {
                                 class: "lessons-list",
                                 for module in t.modules.iter() {
                                     LessonItem {
-                                        trail_id: trail_id.clone(),
+                                        trail_id: trail_id_for_view.clone(),
                                         module: module.clone()
                                     }
                                 }

@@ -1,6 +1,7 @@
 use dioxus::prelude::*;
-use dioxus_router::navigator;
+use dioxus_router::{navigator, components::Link};
 use crate::components::*;
+use crate::components::neon_button::ButtonVariant;
 use crate::context::AppContext;
 use crate::app::Route;
 use domain::traits::{KnowledgeTrailRepository, ReadingContentRepository};
@@ -16,16 +17,35 @@ pub fn LessonViewer(trail_id: String, module_id: String) -> Element {
     let mut loading = use_signal(|| true);
     let ctx = use_context::<AppContext>();
     let nav = navigator();
+    let trail_repo = ctx.trail_repo.clone();
+    let reading_repo = ctx.reading_repo.clone();
+    let user_id = ctx.current_user_id;
+    
+    // Clone for use_effect
+    let trail_id_for_effect = trail_id.clone();
+    let module_id_for_effect = module_id.clone();
+    let trail_repo_for_effect = trail_repo.clone();
+    let reading_repo_for_effect = reading_repo.clone();
+    
+    // Clone for mark_complete
+    let trail_id_for_mark = trail_id.clone();
+    let module_id_for_mark = module_id.clone();
+    let trail_repo_for_mark = trail_repo.clone();
+    
+    // Clone for view
+    let trail_id_for_view = trail_id.clone();
     
     // Load trail and module data
     use_effect(move || {
-        let trail_id_clone = trail_id.clone();
-        let module_id_clone = module_id.clone();
+        let trail_id_str = trail_id_for_effect.clone();
+        let module_id_str = module_id_for_effect.clone();
+        let t_repo = trail_repo_for_effect.clone();
+        let r_repo = reading_repo_for_effect.clone();
         
         spawn(async move {
             loading.set(true);
             
-            let trail_uuid = match Uuid::parse_str(&trail_id_clone) {
+            let trail_uuid = match Uuid::parse_str(&trail_id_str) {
                 Ok(uuid) => uuid,
                 Err(_) => {
                     loading.set(false);
@@ -33,7 +53,7 @@ pub fn LessonViewer(trail_id: String, module_id: String) -> Element {
                 }
             };
             
-            let module_uuid = match Uuid::parse_str(&module_id_clone) {
+            let module_uuid = match Uuid::parse_str(&module_id_str) {
                 Ok(uuid) => uuid,
                 Err(_) => {
                     loading.set(false);
@@ -42,14 +62,14 @@ pub fn LessonViewer(trail_id: String, module_id: String) -> Element {
             };
             
             // Load trail
-            if let Ok(Some(t)) = ctx.trail_repo.find_by_id(trail_uuid).await {
+            if let Ok(Some(t)) = t_repo.find_by_id(trail_uuid).await {
                 // Find the module
                 if let Some(module) = t.modules.iter().find(|m| m.id == module_uuid) {
                     current_module.set(Some(module.clone()));
                     
                     // If it's a reading type, load the reading content
                     if module.content_type == ContentType::Reading {
-                        if let Ok(Some(reading)) = ctx.reading_repo.find_by_id(module.content_id).await {
+                        if let Ok(Some(reading)) = r_repo.find_by_id(module.content_id).await {
                             reading_content.set(Some(reading));
                         }
                     } else if module.content_type == ContentType::Question {
@@ -68,22 +88,24 @@ pub fn LessonViewer(trail_id: String, module_id: String) -> Element {
     });
     
     // Mark lesson as complete
+    let mut trail_mut = trail.clone();
+    let mut current_module_mut = current_module.clone();
     let mark_complete = move |_| {
-        let trail_id_clone = trail_id.clone();
-        let module_id_clone = module_id.clone();
+        let trail_repo = trail_repo_for_mark.clone();
+        let trail_id_str = trail_id_for_mark.clone();
+        let module_id_str = module_id_for_mark.clone();
         
         spawn(async move {
-            let trail_uuid = Uuid::parse_str(&trail_id_clone).unwrap();
-            let module_uuid = Uuid::parse_str(&module_id_clone).unwrap();
-            let user_id = ctx.current_user_id;
+            let trail_uuid = Uuid::parse_str(&trail_id_str).unwrap();
+            let module_uuid = Uuid::parse_str(&module_id_str).unwrap();
             
-            let _ = ctx.trail_repo.mark_module_complete(trail_uuid, module_uuid, user_id).await;
+            let _ = trail_repo.mark_module_complete(trail_uuid, module_uuid, user_id).await;
             
             // Reload trail to get updated progress
-            if let Ok(Some(t)) = ctx.trail_repo.find_by_id(trail_uuid).await {
-                trail.set(Some(t.clone()));
+            if let Ok(Some(t)) = trail_repo.find_by_id(trail_uuid).await {
+                trail_mut.set(Some(t.clone()));
                 if let Some(module) = t.modules.iter().find(|m| m.id == module_uuid) {
-                    current_module.set(Some(module.clone()));
+                    current_module_mut.set(Some(module.clone()));
                 }
             }
         });
@@ -121,7 +143,7 @@ pub fn LessonViewer(trail_id: String, module_id: String) -> Element {
                         div {
                             class: "lesson-nav-top",
                             Link {
-                                to: Route::TrailDetail { trail_id: trail_id.clone() },
+                                to: Route::TrailDetail { trail_id: trail_id_for_view.clone() },
                                 class: "back-to-trail",
                                 "← Voltar para Trilha"
                             }
@@ -151,44 +173,41 @@ pub fn LessonViewer(trail_id: String, module_id: String) -> Element {
                                 if let Some(prev) = prev_module {
                                     Link {
                                         to: Route::LessonViewer {
-                                            trail_id: trail_id.clone(),
+                                            trail_id: trail_id_for_view.clone(),
                                             module_id: prev.id.to_string()
                                         },
                                         NeonButton {
-                                            label: "← Lição Anterior".to_string(),
-                                            variant: "secondary".to_string(),
-                                            onclick: move |_| {}
+                                            variant: ButtonVariant::Secondary,
+                                            "← Lição Anterior"
                                         }
                                     }
                                 }
                                 
                                 if !module.completed {
                                     NeonButton {
-                                        label: "Marcar como Completo".to_string(),
-                                        variant: "primary".to_string(),
-                                        onclick: mark_complete
+                                        variant: ButtonVariant::Primary,
+                                        on_click: mark_complete,
+                                        "Marcar como Completo"
                                     }
                                 }
                                 
                                 if let Some(next) = next_module {
                                     Link {
                                         to: Route::LessonViewer {
-                                            trail_id: trail_id.clone(),
+                                            trail_id: trail_id_for_view.clone(),
                                             module_id: next.id.to_string()
                                         },
                                         NeonButton {
-                                            label: "Próxima Lição →".to_string(),
-                                            variant: if module.completed { "primary".to_string() } else { "secondary".to_string() },
-                                            onclick: move |_| {}
+                                            variant: if module.completed { ButtonVariant::Primary } else { ButtonVariant::Secondary },
+                                            "Próxima Lição →"
                                         }
                                     }
                                 } else {
                                     Link {
-                                        to: Route::TrailDetail { trail_id: trail_id.clone() },
+                                        to: Route::TrailDetail { trail_id: trail_id_for_view.clone() },
                                         NeonButton {
-                                            label: "Voltar para Trilha".to_string(),
-                                            variant: "secondary".to_string(),
-                                            onclick: move |_| {}
+                                            variant: ButtonVariant::Secondary,
+                                            "Voltar para Trilha"
                                         }
                                     }
                                 }
