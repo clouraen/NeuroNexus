@@ -68,33 +68,37 @@ struct TrailCardProps {
 #[component]
 fn TrailCard(props: TrailCardProps) -> Element {
     rsx! {
-        CyberCard {
-            class: "trail-card".to_string(),
-            div {
-                class: "trail-header",
-                h3 {
-                    class: "trail-title",
-                    {props.title.clone()}
+        Link {
+            to: Route::TrailDetail { trail_id: props.id.clone() },
+            class: "trail-card-link",
+            CyberCard {
+                class: "trail-card".to_string(),
+                div {
+                    class: "trail-header",
+                    h3 {
+                        class: "trail-title",
+                        {props.title.clone()}
+                    }
+                    div {
+                        class: "trail-progress",
+                        span {
+                            class: "progress-label",
+                            "Progresso:"
+                        }
+                        span {
+                            class: "progress-value",
+                            {format!("{}%", props.progress)}
+                        }
+                    }
                 }
                 div {
-                    class: "trail-progress",
-                    span {
-                        class: "progress-label",
-                        "Progresso:"
-                    }
-                    span {
-                        class: "progress-value",
-                        {format!("{}%", props.progress)}
-                    }
+                    class: "trail-description",
+                    {props.description.clone()}
                 }
-            }
-            div {
-                class: "trail-description",
-                {props.description.clone()}
-            }
-            NeonProgressBar {
-                progress: props.progress,
-                label: "".to_string()
+                NeonProgressBar {
+                    progress: props.progress,
+                    label: "".to_string()
+                }
             }
         }
     }

@@ -1,0 +1,262 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000101",
+    "title": "ENEM - Matemática Completa",
+    "description": "Trilha completa de Matemática para o ENEM, cobrindo todos os principais tópicos: álgebra, geometria, estatística, probabilidade e matemática financeira. Inclui teoria, exercícios práticos e simulados.",
+    "focus_areas": ["MATEMATICA"],
+    "progress": 0,
+    "estimated_hours": 80,
+    "difficulty_level": "Medio",
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000201",
+        "title": "Fundamentos da Matemática",
+        "description": "Revisão de conceitos fundamentais: operações básicas, frações, potências e raízes.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000301",
+        "order": 0,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000202",
+        "title": "Exercícios de Fixação - Fundamentos",
+        "description": "Pratique os conceitos básicos com questões de diferentes níveis.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000001",
+        "order": 1,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000203",
+        "title": "Álgebra e Equações",
+        "description": "Equações de 1º e 2º grau, sistemas lineares e inequações.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000302",
+        "order": 2,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000204",
+        "title": "Geometria Plana e Espacial",
+        "description": "Áreas, perímetros, volumes e teorema de Pitágoras.",
+        "content_type": "Video",
+        "content_id": "00000000-0000-0000-0000-000000000303",
+        "order": 3,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000205",
+        "title": "Simulado de Matemática",
+        "description": "Teste completo com 45 questões simulando o ENEM.",
+        "content_type": "PracticeTest",
+        "content_id": "00000000-0000-0000-0000-000000000304",
+        "order": 4,
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000102",
+    "title": "Ciências da Natureza - ENEM",
+    "description": "Prepare-se para as provas de Física, Química e Biologia do ENEM. Esta trilha aborda os conceitos essenciais de cada disciplina com foco em questões contextualizadas e interdisciplinares.",
+    "focus_areas": ["FISICA", "QUIMICA", "BIOLOGIA"],
+    "progress": 15,
+    "estimated_hours": 120,
+    "difficulty_level": "Dificil",
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000206",
+        "title": "Introdução à Física - Mecânica",
+        "description": "Cinemática, dinâmica e leis de Newton.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000305",
+        "order": 0,
+        "completed": true
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000207",
+        "title": "Questões de Física - Cinemática",
+        "description": "Resolva questões sobre movimento, velocidade e aceleração.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000002",
+        "order": 1,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000208",
+        "title": "Química Geral e Estequiometria",
+        "description": "Conceitos de mol, massa molar e cálculos estequiométricos.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000306",
+        "order": 2,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000209",
+        "title": "Exercícios de Química",
+        "description": "Pratique cálculos químicos e balanceamento de equações.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000005",
+        "order": 3,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000210",
+        "title": "Biologia - Citologia e Metabolismo",
+        "description": "Estrutura celular, fotossíntese e respiração celular.",
+        "content_type": "Video",
+        "content_id": "00000000-0000-0000-0000-000000000307",
+        "order": 4,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000211",
+        "title": "Questões de Biologia",
+        "description": "Resolva questões sobre processos metabólicos.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000004",
+        "order": 5,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000212",
+        "title": "Simulado Integrado - Ciências da Natureza",
+        "description": "Teste interdisciplinar com 45 questões de Física, Química e Biologia.",
+        "content_type": "PracticeTest",
+        "content_id": "00000000-0000-0000-0000-000000000308",
+        "order": 6,
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000103",
+    "title": "Linguagens e Códigos - ENEM",
+    "description": "Domine as competências de Língua Portuguesa, Literatura e interpretação de textos. Inclui redação, gramática e análise literária.",
+    "focus_areas": ["LINGUA_PORTUGUESA", "LITERATURA", "REDACAO"],
+    "progress": 30,
+    "estimated_hours": 100,
+    "difficulty_level": "Medio",
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000213",
+        "title": "Gramática Essencial",
+        "description": "Morfologia, sintaxe e semântica para o ENEM.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000309",
+        "order": 0,
+        "completed": true
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000214",
+        "title": "Exercícios de Gramática",
+        "description": "Pratique regras gramaticais com questões contextualizadas.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000003",
+        "order": 1,
+        "completed": true
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000215",
+        "title": "Interpretação de Textos",
+        "description": "Técnicas de leitura e compreensão textual.",
+        "content_type": "Video",
+        "content_id": "00000000-0000-0000-0000-000000000310",
+        "order": 2,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000216",
+        "title": "Redação ENEM - Estrutura e Competências",
+        "description": "Aprenda a estrutura da redação do ENEM e as 5 competências avaliadas.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000311",
+        "order": 3,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000217",
+        "title": "Prática de Redação",
+        "description": "Escreva uma redação sobre tema atual e receba feedback detalhado.",
+        "content_type": "Essay",
+        "content_id": "00000000-0000-0000-0000-000000000312",
+        "order": 4,
+        "completed": false
+      }
+    ]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000104",
+    "title": "Ciências Humanas - História e Geografia",
+    "description": "Trilha focada em História do Brasil e do Mundo, Geografia física e humana, com ênfase em questões sociais contemporâneas.",
+    "focus_areas": ["HISTORIA", "GEOGRAFIA", "FILOSOFIA", "SOCIOLOGIA"],
+    "progress": 0,
+    "estimated_hours": 90,
+    "difficulty_level": "Medio",
+    "modules": [
+      {
+        "id": "00000000-0000-0000-0000-000000000218",
+        "title": "Brasil Colonial e Imperial",
+        "description": "Do descobrimento à proclamação da República.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000313",
+        "order": 0,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000219",
+        "title": "Questões de História do Brasil",
+        "description": "Resolva questões sobre os períodos colonial e imperial.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000006",
+        "order": 1,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000220",
+        "title": "Geografia do Brasil",
+        "description": "Biomas, clima, relevo e questões ambientais.",
+        "content_type": "Video",
+        "content_id": "00000000-0000-0000-0000-000000000314",
+        "order": 2,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000221",
+        "title": "Exercícios de Geografia",
+        "description": "Questões sobre biomas e meio ambiente brasileiro.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000007",
+        "order": 3,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000222",
+        "title": "Filosofia Antiga e Moderna",
+        "description": "Principais filósofos e correntes de pensamento.",
+        "content_type": "Reading",
+        "content_id": "00000000-0000-0000-0000-000000000315",
+        "order": 4,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000223",
+        "title": "Questões de Filosofia",
+        "description": "Pratique com questões sobre filosofia clássica e contemporânea.",
+        "content_type": "Question",
+        "content_id": "00000000-0000-0000-0000-000000000008",
+        "order": 5,
+        "completed": false
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000224",
+        "title": "Simulado - Ciências Humanas",
+        "description": "45 questões integrando História, Geografia, Filosofia e Sociologia.",
+        "content_type": "PracticeTest",
+        "content_id": "00000000-0000-0000-0000-000000000316",
+        "order": 6,
+        "completed": false
+      }
+    ]
+  }
+]

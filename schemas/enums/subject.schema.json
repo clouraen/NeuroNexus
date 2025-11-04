@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/enums/subject",
+  "title": "Subject Enumeration",
+  "description": "Academic subject classification for the Brazilian education system. Covers all subjects typically found in ENEM and other Brazilian entrance exams.",
+  "type": "string",
+  "enum": [
+    "LINGUA_PORTUGUESA",
+    "LITERATURA",
+    "INGLES",
+    "ESPANHOL",
+    "ARTES",
+    "EDUCACAO_FISICA",
+    "TIC",
+    "HISTORIA",
+    "GEOGRAFIA",
+    "FILOSOFIA",
+    "SOCIOLOGIA",
+    "FISICA",
+    "QUIMICA",
+    "BIOLOGIA",
+    "MATEMATICA",
+    "REDACAO"
+  ],
+  "examples": [
+    "MATEMATICA",
+    "FISICA",
+    "LINGUA_PORTUGUESA"
+  ],
+  "$defs": {
+    "SubjectDisplayNames": {
+      "type": "object",
+      "description": "Human-readable display names for each subject",
+      "properties": {
+        "LINGUA_PORTUGUESA": {
+          "const": "Língua Portuguesa",
+          "description": "Portuguese Language"
+        },
+        "LITERATURA": {
+          "const": "Literatura",
+          "description": "Literature"
+        },
+        "INGLES": {
+          "const": "Inglês",
+          "description": "English"
+        },
+        "ESPANHOL": {
+          "const": "Espanhol",
+          "description": "Spanish"
+        },
+        "ARTES": {
+          "const": "Artes",
+          "description": "Arts"
+        },
+        "EDUCACAO_FISICA": {
+          "const": "Educação Física",
+          "description": "Physical Education"
+        },
+        "TIC": {
+          "const": "TIC",
+          "description": "Information and Communication Technologies"
+        },
+        "HISTORIA": {
+          "const": "História",
+          "description": "History"
+        },
+        "GEOGRAFIA": {
+          "const": "Geografia",
+          "description": "Geography"
+        },
+        "FILOSOFIA": {
+          "const": "Filosofia",
+          "description": "Philosophy"
+        },
+        "SOCIOLOGIA": {
+          "const": "Sociologia",
+          "description": "Sociology"
+        },
+        "FISICA": {
+          "const": "Física",
+          "description": "Physics"
+        },
+        "QUIMICA": {
+          "const": "Química",
+          "description": "Chemistry"
+        },
+        "BIOLOGIA": {
+          "const": "Biologia",
+          "description": "Biology"
+        },
+        "MATEMATICA": {
+          "const": "Matemática",
+          "description": "Mathematics"
+        },
+        "REDACAO": {
+          "const": "Redação",
+          "description": "Essay Writing"
+        }
+      }
+    }
+  }
+}

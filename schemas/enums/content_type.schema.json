@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/enums/content_type",
+  "title": "Content Type Enumeration",
+  "description": "Types of content modules available in knowledge trails. Each type represents a different learning activity or resource format.",
+  "type": "string",
+  "enum": [
+    "Question",
+    "Essay",
+    "Video",
+    "Reading",
+    "PracticeTest"
+  ],
+  "examples": [
+    "Question",
+    "Reading",
+    "Video"
+  ],
+  "$defs": {
+    "ContentTypeMetadata": {
+      "type": "object",
+      "description": "Metadata and descriptions for each content type",
+      "properties": {
+        "type": {
+          "$ref": "#"
+        },
+        "display_name": {
+          "type": "string",
+          "description": "Human-readable name for the content type"
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the content type"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Suggested icon identifier for UI representation"
+        },
+        "interactive": {
+          "type": "boolean",
+          "description": "Whether the content type requires user interaction"
+        },
+        "estimated_duration_multiplier": {
+          "type": "number",
+          "description": "Multiplier for estimating completion time (minutes per unit)"
+        }
+      },
+      "examples": [
+        {
+          "type": "Question",
+          "display_name": "Multiple Choice Question",
+          "description": "Interactive multiple-choice question with alternatives and explanation",
+          "icon": "question-circle",
+          "interactive": true,
+          "estimated_duration_multiplier": 3
+        },
+        {
+          "type": "Essay",
+          "display_name": "Essay Assignment",
+          "description": "Written essay assignment with evaluation and feedback",
+          "icon": "edit",
+          "interactive": true,
+          "estimated_duration_multiplier": 60
+        },
+        {
+          "type": "Video",
+          "display_name": "Video Content",
+          "description": "Educational video content for learning",
+          "icon": "play-circle",
+          "interactive": false,
+          "estimated_duration_multiplier": 1
+        },
+        {
+          "type": "Reading",
+          "display_name": "Reading Material",
+          "description": "Text-based learning material or article",
+          "icon": "book",
+          "interactive": false,
+          "estimated_duration_multiplier": 5
+        },
+        {
+          "type": "PracticeTest",
+          "display_name": "Practice Test",
+          "description": "Comprehensive practice examination with multiple questions",
+          "icon": "clipboard-check",
+          "interactive": true,
+          "estimated_duration_multiplier": 2
+        }
+      ]
+    }
+  }
+}

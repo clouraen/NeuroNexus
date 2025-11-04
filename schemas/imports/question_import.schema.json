@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/imports/question_import",
+  "title": "Question Import Format",
+  "description": "Schema for importing questions in batch. Supports both creating new questions and updating existing ones. Can be used with JSON files or API payloads.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 1000,
+  "items": {
+    "$ref": "#/$defs/QuestionImport"
+  },
+  "$defs": {
+    "QuestionImport": {
+      "type": "object",
+      "title": "Single Question Import",
+      "description": "A single question to be imported. ID is optional and will be generated if not provided.",
+      "required": [
+        "subject",
+        "difficulty",
+        "statement",
+        "alternatives",
+        "correct_answer",
+        "explanation",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "anyOf": [
+            {"$ref": "../meta/common.schema.json#/$defs/UUID"},
+            {"type": "null"}
+          ],
+          "description": "Optional UUID. If not provided, a new UUID will be generated. If provided, must be a valid UUID format."
+        },
+        "subject": {
+          "$ref": "../enums/subject.schema.json",
+          "description": "Academic subject classification"
+        },
+        "difficulty": {
+          "$ref": "../enums/difficulty.schema.json",
+          "description": "Question difficulty level"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 5000,
+          "description": "The question text or problem statement"
+        },
+        "alternatives": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/$defs/AlternativeImport"
+          },
+          "description": "Array of possible answer choices (2-5 alternatives required)"
+        },
+        "correct_answer": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4,
+          "description": "Zero-based index of the correct alternative. Must be a valid index into the alternatives array."
+        },
+        "explanation": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 3000,
+          "description": "Detailed explanation of the correct answer"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "uniqueItems": true,
+          "default": [],
+          "description": "Categorization tags. Defaults to empty array if not provided."
+        }
+      },
+      "additionalProperties": false
+    },
+    "AlternativeImport": {
+      "type": "object",
+      "title": "Alternative Import",
+      "description": "A single answer alternative for import",
+      "required": ["id", "text"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4,
+          "description": "Zero-based index identifier (0-4)"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "The answer text"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    [
+      {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "subject": "MATEMATICA",
+        "difficulty": "Medio",
+        "statement": "Qual é o valor de x na equação 2x + 5 = 15?",
+        "alternatives": [
+          {"id": 0, "text": "x = 3"},
+          {"id": 1, "text": "x = 5"},
+          {"id": 2, "text": "x = 7"},
+          {"id": 3, "text": "x = 10"}
+        ],
+        "correct_answer": 1,
+        "explanation": "Para resolver: 2x + 5 = 15 → 2x = 10 → x = 5",
+        "tags": ["algebra", "equacoes", "primeiro-grau"]
+      },
+      {
+        "subject": "LINGUA_PORTUGUESA",
+        "difficulty": "Facil",
+        "statement": "Qual é a função sintática do termo sublinhado?",
+        "alternatives": [
+          {"id": 0, "text": "Sujeito"},
+          {"id": 1, "text": "Predicado verbal"},
+          {"id": 2, "text": "Objeto direto"}
+        ],
+        "correct_answer": 1,
+        "explanation": "O verbo é o núcleo do predicado verbal.",
+        "tags": ["sintaxe", "analise-sintatica"]
+      }
+    ]
+  ]
+}

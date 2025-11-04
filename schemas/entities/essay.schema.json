@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/entities/essay",
+  "title": "Essay Entity",
+  "description": "Represents a student essay submission with evaluation data, corrections, and rubric-based scoring. Used for essay assignments and practice.",
+  "type": "object",
+  "required": [
+    "id",
+    "user_id",
+    "title",
+    "content",
+    "exam_type",
+    "status",
+    "max_score",
+    "created_at",
+    "updated_at"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "../meta/common.schema.json#/$defs/UUID",
+      "description": "Unique identifier for the essay"
+    },
+    "user_id": {
+      "$ref": "../meta/common.schema.json#/$defs/UUID",
+      "description": "Identifier of the user who wrote the essay"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 200,
+      "description": "Essay title"
+    },
+    "content": {
+      "type": "string",
+      "minLength": 100,
+      "maxLength": 50000,
+      "description": "The essay text content"
+    },
+    "exam_type": {
+      "$ref": "../enums/exam_type.schema.json",
+      "description": "Target exam type for this essay"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["EmProgresso", "Enviada", "Corrigida"],
+      "description": "Current status of the essay: EmProgresso (In Progress), Enviada (Submitted), Corrigida (Graded)"
+    },
+    "score": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "description": "Awarded score for the essay (null if not yet graded)"
+    },
+    "max_score": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Maximum possible score for this essay based on exam type"
+    },
+    "feedback": {
+      "type": ["string", "null"],
+      "maxLength": 10000,
+      "description": "Overall feedback from the evaluator"
+    },
+    "corrections": {
+      "type": ["array", "null"],
+      "items": {
+        "$ref": "#/$defs/Correction"
+      },
+      "description": "Array of specific corrections and suggestions"
+    },
+    "rubric_scores": {
+      "anyOf": [
+        {"$ref": "#/$defs/RubricScores"},
+        {"type": "null"}
+      ],
+      "description": "Rubric-based scoring breakdown"
+    },
+    "created_at": {
+      "$ref": "../meta/common.schema.json#/$defs/DateTime",
+      "description": "Timestamp when the essay was created"
+    },
+    "updated_at": {
+      "$ref": "../meta/common.schema.json#/$defs/DateTime",
+      "description": "Timestamp of the last update"
+    },
+    "submitted_at": {
+      "anyOf": [
+        {"$ref": "../meta/common.schema.json#/$defs/DateTime"},
+        {"type": "null"}
+      ],
+      "description": "Timestamp when the essay was submitted for evaluation"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Correction": {
+      "type": "object",
+      "title": "Essay Correction",
+      "description": "A specific correction or suggestion for improvement in the essay",
+      "required": [
+        "position",
+        "original_text",
+        "suggested_text",
+        "reason",
+        "rubric_criterion"
+      ],
+      "properties": {
+        "position": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Character position in the essay where the correction applies"
+        },
+        "original_text": {
+          "type": "string",
+          "description": "The original text that needs correction"
+        },
+        "suggested_text": {
+          "type": "string",
+          "description": "Suggested replacement or improvement"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1000,
+          "description": "Explanation of why the correction is needed"
+        },
+        "rubric_criterion": {
+          "type": "string",
+          "description": "The rubric criterion this correction relates to"
+        }
+      },
+      "additionalProperties": false
+    },
+    "RubricScores": {
+      "type": "object",
+      "title": "Rubric Scores",
+      "description": "Detailed scoring based on evaluation rubric criteria",
+      "required": ["scores", "detailed_feedback"],
+      "properties": {
+        "scores": {
+          "type": "object",
+          "description": "Map of criterion name to score",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "examples": [
+            {
+              "Competência 1": 200,
+              "Competência 2": 180,
+              "Competência 3": 200,
+              "Competência 4": 180,
+              "Competência 5": 200
+            }
+          ]
+        },
+        "detailed_feedback": {
+          "type": "object",
+          "description": "Map of criterion name to detailed feedback text",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "examples": [
+            {
+              "Competência 1": "Demonstra excelente domínio da norma culta da língua portuguesa.",
+              "Competência 2": "Compreende bem o tema, mas poderia desenvolver melhor alguns argumentos."
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    {
+      "id": "00000000-0000-0000-0000-000000000501",
+      "user_id": "00000000-0000-0000-0000-000000000401",
+      "title": "A importância da educação digital no século XXI",
+      "content": "A educação digital tornou-se fundamental no contexto contemporâneo...",
+      "exam_type": "ENEM",
+      "status": "Corrigida",
+      "score": 960,
+      "max_score": 1000,
+      "feedback": "Excelente redação! Apresenta boa argumentação e domínio da norma culta.",
+      "corrections": [
+        {
+          "position": 150,
+          "original_text": "mais melhor",
+          "suggested_text": "melhor",
+          "reason": "Evite pleonasmo vicioso. 'Mais melhor' é redundante.",
+          "rubric_criterion": "Competência 1"
+        }
+      ],
+      "rubric_scores": {
+        "scores": {
+          "Competência 1": 200,
+          "Competência 2": 180,
+          "Competência 3": 200,
+          "Competência 4": 180,
+          "Competência 5": 200
+        },
+        "detailed_feedback": {
+          "Competência 1": "Demonstra excelente domínio da norma culta.",
+          "Competência 2": "Compreende bem o tema com argumentos sólidos."
+        }
+      },
+      "created_at": "2023-11-01T10:00:00Z",
+      "updated_at": "2023-11-02T15:30:00Z",
+      "submitted_at": "2023-11-01T14:00:00Z"
+    }
+  ]
+}

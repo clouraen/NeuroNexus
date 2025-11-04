@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/enums/exam_type",
+  "title": "Exam Type Enumeration",
+  "description": "Brazilian entrance exam types supported by the platform. Each exam type has specific scoring rules and maximum scores.",
+  "type": "string",
+  "enum": [
+    "ENEM", "FUVEST", "UNICAMP", "UNESP", "UERJ", "ITA", "IME",
+    "UFRJ", "UFMG", "UFSC", "UFRGS", "UFPR", "UFSCAR", "UFPE",
+    "UFBA", "UFC", "UFPA", "UFAM", "UFAC", "UFRN", "UFMS",
+    "UFG", "UFES", "UFJF", "UFV", "UFTM", "UFPB", "UFPI",
+    "UFMA", "UFS", "UFT", "UFOPA", "UNB", "UEG", "UEMA",
+    "UECE", "UERN", "UEPB", "UEPG", "UEL", "UNEMAT", "UERR",
+    "UEA", "UFRR", "UPE", "UENF", "UNIFESP", "UESC", "UEMG",
+    "UEM", "UESB", "UESPI", "UESF", "UESR", "UESG"
+  ],
+  "examples": [
+    "ENEM",
+    "FUVEST",
+    "ITA"
+  ],
+  "$defs": {
+    "ExamTypeMetadata": {
+      "type": "object",
+      "description": "Metadata for each exam type including max score and display name",
+      "required": ["type", "display_name", "max_score"],
+      "properties": {
+        "type": {
+          "$ref": "#"
+        },
+        "display_name": {
+          "type": "string",
+          "description": "Human-readable name for the exam"
+        },
+        "max_score": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum possible score for this exam type"
+        },
+        "institution": {
+          "type": "string",
+          "description": "Institution or organization that administers the exam"
+        },
+        "scope": {
+          "type": "string",
+          "enum": ["National", "State", "University"],
+          "description": "Geographic or institutional scope of the exam"
+        }
+      },
+      "examples": [
+        {
+          "type": "ENEM",
+          "display_name": "ENEM",
+          "max_score": 1000,
+          "institution": "INEP - Ministry of Education",
+          "scope": "National"
+        },
+        {
+          "type": "FUVEST",
+          "display_name": "FUVEST (USP)",
+          "max_score": 48,
+          "institution": "University of São Paulo",
+          "scope": "University"
+        },
+        {
+          "type": "ITA",
+          "display_name": "ITA",
+          "max_score": 50,
+          "institution": "Instituto Tecnológico de Aeronáutica",
+          "scope": "University"
+        }
+      ]
+    }
+  }
+}

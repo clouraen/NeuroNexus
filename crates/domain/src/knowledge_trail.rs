@@ -14,7 +14,7 @@ pub struct KnowledgeTrail {
     pub difficulty_level: Difficulty,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub struct TrailModule {
     pub id: Uuid,
     pub title: String,

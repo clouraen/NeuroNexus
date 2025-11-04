@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/entities/knowledge_trail",
+  "title": "Knowledge Trail Entity",
+  "description": "Represents a structured learning path composed of multiple modules. Each trail focuses on specific subjects and guides learners through a curated sequence of educational content.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "description",
+    "focus_areas",
+    "progress",
+    "modules",
+    "estimated_hours",
+    "difficulty_level"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "../meta/common.schema.json#/$defs/UUID",
+      "description": "Unique identifier for the knowledge trail"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 150,
+      "description": "The trail title or name"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 2000,
+      "description": "Detailed description of the trail content and learning objectives"
+    },
+    "focus_areas": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 10,
+      "items": {
+        "$ref": "../enums/subject.schema.json"
+      },
+      "uniqueItems": true,
+      "description": "Array of subjects covered by this trail"
+    },
+    "progress": {
+      "$ref": "../meta/common.schema.json#/$defs/PercentageScore",
+      "description": "Completion percentage (0-100)"
+    },
+    "modules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/TrailModule"
+      },
+      "description": "Ordered array of learning modules in this trail"
+    },
+    "estimated_hours": {
+      "$ref": "../meta/common.schema.json#/$defs/PositiveInteger",
+      "description": "Estimated time in hours to complete the entire trail"
+    },
+    "difficulty_level": {
+      "$ref": "../enums/difficulty.schema.json",
+      "description": "Overall difficulty level of the trail"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "TrailModule": {
+      "type": "object",
+      "title": "Trail Module",
+      "description": "A single learning module within a knowledge trail. References specific content by type and ID.",
+      "required": [
+        "id",
+        "title",
+        "description",
+        "content_type",
+        "content_id",
+        "order",
+        "completed"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "../meta/common.schema.json#/$defs/UUID",
+          "description": "Unique identifier for the module"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 150,
+          "description": "The module title"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1000,
+          "description": "Description of what the module covers"
+        },
+        "content_type": {
+          "$ref": "../enums/content_type.schema.json",
+          "description": "Type of content this module contains"
+        },
+        "content_id": {
+          "$ref": "../meta/common.schema.json#/$defs/UUID",
+          "description": "Reference to the actual content entity (question, essay, video, etc.)"
+        },
+        "order": {
+          "$ref": "../meta/common.schema.json#/$defs/PositiveInteger",
+          "description": "Zero-based position of this module in the trail sequence"
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether the user has completed this module"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    {
+      "id": "00000000-0000-0000-0000-000000000101",
+      "title": "ENEM - Matemática Completa",
+      "description": "Trilha completa de Matemática para o ENEM, cobrindo todos os principais tópicos: álgebra, geometria, estatística, probabilidade e matemática financeira.",
+      "focus_areas": ["MATEMATICA"],
+      "progress": 0,
+      "estimated_hours": 80,
+      "difficulty_level": "Medio",
+      "modules": [
+        {
+          "id": "00000000-0000-0000-0000-000000000201",
+          "title": "Fundamentos da Matemática",
+          "description": "Revisão de conceitos fundamentais: operações básicas, frações, potências e raízes.",
+          "content_type": "Reading",
+          "content_id": "00000000-0000-0000-0000-000000000301",
+          "order": 0,
+          "completed": false
+        },
+        {
+          "id": "00000000-0000-0000-0000-000000000202",
+          "title": "Exercícios de Fixação - Fundamentos",
+          "description": "Pratique os conceitos básicos com questões de diferentes níveis.",
+          "content_type": "Question",
+          "content_id": "00000000-0000-0000-0000-000000000001",
+          "order": 1,
+          "completed": false
+        }
+      ]
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000102",
+      "title": "Ciências da Natureza - ENEM",
+      "description": "Prepare-se para as provas de Física, Química e Biologia do ENEM.",
+      "focus_areas": ["FISICA", "QUIMICA", "BIOLOGIA"],
+      "progress": 15,
+      "estimated_hours": 120,
+      "difficulty_level": "Dificil",
+      "modules": [
+        {
+          "id": "00000000-0000-0000-0000-000000000206",
+          "title": "Introdução à Física - Mecânica",
+          "description": "Cinemática, dinâmica e leis de Newton.",
+          "content_type": "Reading",
+          "content_id": "00000000-0000-0000-0000-000000000305",
+          "order": 0,
+          "completed": true
+        }
+      ]
+    }
+  ]
+}

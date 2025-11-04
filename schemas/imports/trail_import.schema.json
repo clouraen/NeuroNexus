@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/imports/trail_import",
+  "title": "Knowledge Trail Import Format",
+  "description": "Schema for importing knowledge trails in batch. Supports complex trail structures with multiple modules and content references.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 100,
+  "items": {
+    "$ref": "#/$defs/TrailImport"
+  },
+  "$defs": {
+    "TrailImport": {
+      "type": "object",
+      "title": "Single Trail Import",
+      "description": "A single knowledge trail to be imported. ID is optional and will be generated if not provided.",
+      "required": [
+        "title",
+        "description",
+        "focus_areas",
+        "modules",
+        "estimated_hours",
+        "difficulty_level"
+      ],
+      "properties": {
+        "id": {
+          "anyOf": [
+            {"$ref": "../meta/common.schema.json#/$defs/UUID"},
+            {"type": "null"}
+          ],
+          "description": "Optional UUID. If not provided, a new UUID will be generated."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 150,
+          "description": "The trail title or name"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 2000,
+          "description": "Detailed description of the trail"
+        },
+        "focus_areas": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "items": {
+            "$ref": "../enums/subject.schema.json"
+          },
+          "uniqueItems": true,
+          "description": "Array of subjects covered by this trail"
+        },
+        "progress": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100,
+          "default": 0,
+          "description": "Completion percentage (defaults to 0 if not provided)"
+        },
+        "modules": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "items": {
+            "$ref": "#/$defs/ModuleImport"
+          },
+          "description": "Array of learning modules"
+        },
+        "estimated_hours": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Estimated hours to complete the trail"
+        },
+        "difficulty_level": {
+          "$ref": "../enums/difficulty.schema.json",
+          "description": "Overall difficulty level"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ModuleImport": {
+      "type": "object",
+      "title": "Module Import",
+      "description": "A single module within a trail",
+      "required": [
+        "title",
+        "description",
+        "content_type",
+        "content_id",
+        "order"
+      ],
+      "properties": {
+        "id": {
+          "anyOf": [
+            {"$ref": "../meta/common.schema.json#/$defs/UUID"},
+            {"type": "null"}
+          ],
+          "description": "Optional UUID for the module. Generated if not provided."
+        },
+        "title": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 150,
+          "description": "Module title"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 1000,
+          "description": "Module description"
+        },
+        "content_type": {
+          "$ref": "../enums/content_type.schema.json",
+          "description": "Type of content"
+        },
+        "content_id": {
+          "$ref": "../meta/common.schema.json#/$defs/UUID",
+          "description": "Reference to the content entity"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-based position in the trail"
+        },
+        "completed": {
+          "type": "boolean",
+          "default": false,
+          "description": "Completion status (defaults to false)"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    [
+      {
+        "id": "00000000-0000-0000-0000-000000000101",
+        "title": "ENEM - Matemática Completa",
+        "description": "Trilha completa de Matemática para o ENEM",
+        "focus_areas": ["MATEMATICA"],
+        "progress": 0,
+        "estimated_hours": 80,
+        "difficulty_level": "Medio",
+        "modules": [
+          {
+            "id": "00000000-0000-0000-0000-000000000201",
+            "title": "Fundamentos da Matemática",
+            "description": "Revisão de conceitos fundamentais",
+            "content_type": "Reading",
+            "content_id": "00000000-0000-0000-0000-000000000301",
+            "order": 0,
+            "completed": false
+          },
+          {
+            "id": "00000000-0000-0000-0000-000000000202",
+            "title": "Exercícios de Fixação",
+            "description": "Pratique os conceitos básicos",
+            "content_type": "Question",
+            "content_id": "00000000-0000-0000-0000-000000000001",
+            "order": 1,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "title": "Ciências da Natureza - ENEM",
+        "description": "Prepare-se para Física, Química e Biologia",
+        "focus_areas": ["FISICA", "QUIMICA", "BIOLOGIA"],
+        "progress": 15,
+        "estimated_hours": 120,
+        "difficulty_level": "Dificil",
+        "modules": [
+          {
+            "title": "Introdução à Física",
+            "description": "Mecânica básica",
+            "content_type": "Video",
+            "content_id": "00000000-0000-0000-0000-000000000305",
+            "order": 0
+          }
+        ]
+      }
+    ]
+  ]
+}

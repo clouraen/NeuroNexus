@@ -16,6 +16,7 @@ desktop = ["dioxus/desktop"]
 domain = { path = "../domain" }
 data = { path = "../data" }
 shared = { path = "../shared" }
+services = { path = "../services" }
 dioxus = { workspace = true, features = ["web"] }
 dioxus-router.workspace = true
 dioxus-web.workspace = true

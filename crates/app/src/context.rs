@@ -2,7 +2,7 @@ use std::sync::{Arc, Mutex, RwLock};
 use data::{
     InMemoryEssayRepository, InMemoryQuestionRepository,
     InMemoryUserRepository, InMemoryKnowledgeTrailRepository,
-    InMemoryExamRubricRepository,
+    InMemoryExamRubricRepository, InMemoryReadingContentRepository,
 };
 use shared::{Translator, LocaleDetector};
 use uuid::Uuid;
@@ -15,6 +15,7 @@ pub struct AppContext {
     pub user_repo: Arc<InMemoryUserRepository>,
     pub trail_repo: Arc<InMemoryKnowledgeTrailRepository>,
     pub rubric_repo: Arc<InMemoryExamRubricRepository>,
+    pub reading_repo: Arc<InMemoryReadingContentRepository>,
     pub current_user_id: Uuid,
     pub translator: Arc<Mutex<Translator>>,
     pub current_locale: Arc<RwLock<String>>,
@@ -27,6 +28,7 @@ impl AppContext {
         let user_repo = Arc::new(InMemoryUserRepository::new());
         let trail_repo = Arc::new(InMemoryKnowledgeTrailRepository::new());
         let rubric_repo = Arc::new(InMemoryExamRubricRepository::new());
+        let reading_repo = Arc::new(InMemoryReadingContentRepository::new());
         
         // User ID padrão (do seeder)
         let current_user_id = Uuid::parse_str("00000000-0000-0000-0000-000000000001")
@@ -46,6 +48,7 @@ impl AppContext {
             user_repo,
             trail_repo,
             rubric_repo,
+            reading_repo,
             current_user_id,
             translator,
             current_locale,

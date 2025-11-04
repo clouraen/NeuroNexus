@@ -1,0 +1,250 @@
+[
+  {
+    "id": "00000000-0000-0000-0000-000000000001",
+    "subject": "MATEMATICA",
+    "difficulty": "Medio",
+    "statement": "Uma empresa de transporte precisa calcular a quantidade de combustível necessária para uma viagem de 450 km. Sabendo que o veículo faz 12 km por litro e que o preço do combustível é R$ 5,50 por litro, qual será o custo total de combustível para essa viagem?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "R$ 206,25"
+      },
+      {
+        "id": 1,
+        "text": "R$ 225,00"
+      },
+      {
+        "id": 2,
+        "text": "R$ 187,50"
+      },
+      {
+        "id": 3,
+        "text": "R$ 247,50"
+      },
+      {
+        "id": 4,
+        "text": "R$ 275,00"
+      }
+    ],
+    "correct_answer": 0,
+    "explanation": "Primeiro, calculamos a quantidade de litros necessária: 450 km ÷ 12 km/L = 37,5 L. Depois, multiplicamos pelo preço: 37,5 L × R$ 5,50 = R$ 206,25.",
+    "tags": ["proporcionalidade", "divisão", "multiplicação", "problemas práticos"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000002",
+    "subject": "FISICA",
+    "difficulty": "Dificil",
+    "statement": "Um corpo de massa 2 kg é lançado verticalmente para cima com velocidade inicial de 20 m/s. Desprezando a resistência do ar e considerando g = 10 m/s², qual é a altura máxima atingida pelo corpo?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "10 metros"
+      },
+      {
+        "id": 1,
+        "text": "15 metros"
+      },
+      {
+        "id": 2,
+        "text": "20 metros"
+      },
+      {
+        "id": 3,
+        "text": "25 metros"
+      },
+      {
+        "id": 4,
+        "text": "30 metros"
+      }
+    ],
+    "correct_answer": 2,
+    "explanation": "Usando a equação de Torricelli: V² = V₀² - 2gH. No ponto máximo, V = 0, então 0 = 20² - 2(10)H → 400 = 20H → H = 20 metros.",
+    "tags": ["cinemática", "lançamento vertical", "equação de Torricelli"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000003",
+    "subject": "LINGUA_PORTUGUESA",
+    "difficulty": "Facil",
+    "statement": "Assinale a alternativa que apresenta corretamente o plural da palavra 'cidadão':",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "cidadãos"
+      },
+      {
+        "id": 1,
+        "text": "cidadões"
+      },
+      {
+        "id": 2,
+        "text": "cidadães"
+      },
+      {
+        "id": 3,
+        "text": "cidadans"
+      },
+      {
+        "id": 4,
+        "text": "cidadaos"
+      }
+    ],
+    "correct_answer": 0,
+    "explanation": "O plural de 'cidadão' é 'cidadãos'. Palavras terminadas em -ão podem ter três tipos de plural (-ões, -ães, -ãos), mas 'cidadão' segue a regra de manter o 'ã' e adicionar 's'.",
+    "tags": ["plural", "morfologia", "gramática"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000004",
+    "subject": "BIOLOGIA",
+    "difficulty": "Medio",
+    "statement": "A fotossíntese é um processo fundamental para a vida na Terra. Qual das alternativas a seguir representa corretamente a equação geral da fotossíntese?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "6CO₂ + 6H₂O + luz → C₆H₁₂O₆ + 6O₂"
+      },
+      {
+        "id": 1,
+        "text": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + energia"
+      },
+      {
+        "id": 2,
+        "text": "6CO₂ + 12H₂O + luz → C₆H₁₂O₆ + 6O₂ + 6H₂O"
+      },
+      {
+        "id": 3,
+        "text": "CO₂ + H₂O → CH₂O + O₂"
+      },
+      {
+        "id": 4,
+        "text": "2H₂O + luz → 4H⁺ + O₂ + 4e⁻"
+      }
+    ],
+    "correct_answer": 2,
+    "explanation": "A equação completa da fotossíntese é 6CO₂ + 12H₂O + luz → C₆H₁₂O₆ + 6O₂ + 6H₂O. Note que são necessárias 12 moléculas de água e 6 são liberadas no processo.",
+    "tags": ["fotossíntese", "metabolismo", "bioquímica", "plantas"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000005",
+    "subject": "QUIMICA",
+    "difficulty": "Medio",
+    "statement": "Qual é a massa molar aproximada do carbonato de cálcio (CaCO₃)? Dados: Ca = 40 g/mol, C = 12 g/mol, O = 16 g/mol",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "68 g/mol"
+      },
+      {
+        "id": 1,
+        "text": "84 g/mol"
+      },
+      {
+        "id": 2,
+        "text": "100 g/mol"
+      },
+      {
+        "id": 3,
+        "text": "112 g/mol"
+      },
+      {
+        "id": 4,
+        "text": "128 g/mol"
+      }
+    ],
+    "correct_answer": 2,
+    "explanation": "A massa molar do CaCO₃ é calculada somando as massas atômicas: Ca (40) + C (12) + 3×O (3×16 = 48) = 40 + 12 + 48 = 100 g/mol.",
+    "tags": ["estequiometria", "massa molar", "cálculos químicos"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000006",
+    "subject": "HISTORIA",
+    "difficulty": "Medio",
+    "statement": "A Revolução Industrial, iniciada na Inglaterra no século XVIII, trouxe profundas transformações sociais e econômicas. Qual das alternativas apresenta uma característica desse período?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "Retorno ao sistema feudal de produção"
+      },
+      {
+        "id": 1,
+        "text": "Fortalecimento das corporações de ofício medievais"
+      },
+      {
+        "id": 2,
+        "text": "Migração massiva do campo para as cidades"
+      },
+      {
+        "id": 3,
+        "text": "Diminuição da produção industrial em favor da artesanal"
+      },
+      {
+        "id": 4,
+        "text": "Redução da jornada de trabalho para 6 horas diárias"
+      }
+    ],
+    "correct_answer": 2,
+    "explanation": "A Revolução Industrial provocou um intenso êxodo rural, com massiva migração de trabalhadores do campo para as cidades em busca de emprego nas fábricas.",
+    "tags": ["revolução industrial", "história moderna", "transformações sociais"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000007",
+    "subject": "GEOGRAFIA",
+    "difficulty": "Facil",
+    "statement": "Qual é o maior bioma brasileiro em extensão territorial?",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "Mata Atlântica"
+      },
+      {
+        "id": 1,
+        "text": "Cerrado"
+      },
+      {
+        "id": 2,
+        "text": "Amazônia"
+      },
+      {
+        "id": 3,
+        "text": "Caatinga"
+      },
+      {
+        "id": 4,
+        "text": "Pantanal"
+      }
+    ],
+    "correct_answer": 2,
+    "explanation": "A Amazônia é o maior bioma brasileiro, ocupando cerca de 49% do território nacional, abrangendo aproximadamente 4,2 milhões de km².",
+    "tags": ["biomas", "geografia do Brasil", "meio ambiente"]
+  },
+  {
+    "id": "00000000-0000-0000-0000-000000000008",
+    "subject": "FILOSOFIA",
+    "difficulty": "Dificil",
+    "statement": "O 'Mito da Caverna', apresentado por Platão em 'A República', é uma alegoria sobre:",
+    "alternatives": [
+      {
+        "id": 0,
+        "text": "A origem do universo e da matéria"
+      },
+      {
+        "id": 1,
+        "text": "O processo de conhecimento e a distinção entre mundo sensível e inteligível"
+      },
+      {
+        "id": 2,
+        "text": "A formação do Estado e suas instituições"
+      },
+      {
+        "id": 3,
+        "text": "As relações econômicas na Grécia Antiga"
+      },
+      {
+        "id": 4,
+        "text": "O desenvolvimento da democracia ateniense"
+      }
+    ],
+    "correct_answer": 1,
+    "explanation": "O Mito da Caverna ilustra a teoria do conhecimento de Platão, mostrando a diferença entre o mundo sensível (das sombras) e o mundo inteligível (das ideias), além do processo de libertação e busca pela verdade.",
+    "tags": ["Platão", "epistemologia", "filosofia clássica", "teoria das ideias"]
+  }
+]

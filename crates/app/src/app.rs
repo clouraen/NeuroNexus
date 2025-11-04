@@ -12,6 +12,10 @@ pub enum Route {
     Home {},
     #[route("/trilhas")]
     KnowledgeTrails {},
+    #[route("/trilha/:trail_id")]
+    TrailDetail { trail_id: String },
+    #[route("/trilha/:trail_id/licao/:module_id")]
+    LessonViewer { trail_id: String, module_id: String },
     #[route("/questoes")]
     Questions {},
     #[route("/questao/:id")]

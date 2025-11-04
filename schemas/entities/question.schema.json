@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/entities/question",
+  "title": "Question Entity",
+  "description": "Represents a multiple-choice question with alternatives, correct answer, and explanation. Used throughout the platform for assessments, practice tests, and learning modules.",
+  "type": "object",
+  "required": [
+    "id",
+    "subject",
+    "difficulty",
+    "statement",
+    "alternatives",
+    "correct_answer",
+    "explanation",
+    "tags"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "../meta/common.schema.json#/$defs/UUID",
+      "description": "Unique identifier for the question"
+    },
+    "subject": {
+      "$ref": "../enums/subject.schema.json",
+      "description": "Academic subject classification"
+    },
+    "difficulty": {
+      "$ref": "../enums/difficulty.schema.json",
+      "description": "Question difficulty level"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 5000,
+      "description": "The question text or problem statement"
+    },
+    "alternatives": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "items": {
+        "$ref": "#/$defs/Alternative"
+      },
+      "description": "Array of possible answer choices"
+    },
+    "correct_answer": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Zero-based index of the correct alternative in the alternatives array"
+    },
+    "explanation": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 3000,
+      "description": "Detailed explanation of the correct answer and solution process"
+    },
+    "tags": {
+      "$ref": "../meta/common.schema.json#/$defs/TagArray",
+      "description": "Categorization tags for filtering and searching"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Alternative": {
+      "type": "object",
+      "title": "Answer Alternative",
+      "description": "A single answer option for a multiple-choice question",
+      "required": ["id", "text"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-based index identifier for this alternative"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "The answer text"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "subject": "MATEMATICA",
+      "difficulty": "Medio",
+      "statement": "Uma empresa de transporte precisa calcular a quantidade de combustível necessária para uma viagem de 450 km. Sabendo que o veículo faz 12 km por litro e que o preço do combustível é R$ 5,50 por litro, qual será o custo total de combustível para essa viagem?",
+      "alternatives": [
+        {"id": 0, "text": "R$ 206,25"},
+        {"id": 1, "text": "R$ 225,00"},
+        {"id": 2, "text": "R$ 187,50"},
+        {"id": 3, "text": "R$ 247,50"},
+        {"id": 4, "text": "R$ 275,00"}
+      ],
+      "correct_answer": 0,
+      "explanation": "Primeiro, calculamos a quantidade de litros necessária: 450 km ÷ 12 km/L = 37,5 L. Depois, multiplicamos pelo preço: 37,5 L × R$ 5,50 = R$ 206,25.",
+      "tags": ["proporcionalidade", "divisão", "multiplicação", "problemas práticos"]
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "subject": "FISICA",
+      "difficulty": "Dificil",
+      "statement": "Um corpo de massa 2 kg é lançado verticalmente para cima com velocidade inicial de 20 m/s. Desprezando a resistência do ar e considerando g = 10 m/s², qual é a altura máxima atingida pelo corpo?",
+      "alternatives": [
+        {"id": 0, "text": "10 metros"},
+        {"id": 1, "text": "15 metros"},
+        {"id": 2, "text": "20 metros"},
+        {"id": 3, "text": "25 metros"},
+        {"id": 4, "text": "30 metros"}
+      ],
+      "correct_answer": 2,
+      "explanation": "Usando a equação de Torricelli: V² = V₀² - 2gH. No ponto máximo, V = 0, então 0 = 20² - 2(10)H → 400 = 20H → H = 20 metros.",
+      "tags": ["cinemática", "lançamento vertical", "equação de Torricelli"]
+    }
+  ]
+}

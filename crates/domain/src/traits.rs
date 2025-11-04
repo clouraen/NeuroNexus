@@ -4,6 +4,7 @@ use super::essay::{Essay, EssayStatus, ExamType, ExamRubric};
 use super::question::{Question, Subject, Difficulty};
 use super::user::{UserProfile, UserSettings, StudyProgress};
 use super::knowledge_trail::KnowledgeTrail;
+use super::reading_content::ReadingContent;
 use shared::Result;
 
 #[async_trait]
@@ -36,6 +37,8 @@ pub trait KnowledgeTrailRepository: Send + Sync {
     async fn list_available(&self) -> Result<Vec<KnowledgeTrail>>;
     async fn list_by_user(&self, user_id: Uuid) -> Result<Vec<KnowledgeTrail>>;
     async fn update_progress(&self, trail_id: Uuid, user_id: Uuid, progress: u8) -> Result<()>;
+    async fn mark_module_complete(&self, trail_id: Uuid, module_id: Uuid, user_id: Uuid) -> Result<()>;
+    async fn update(&self, trail: KnowledgeTrail) -> Result<()>;
 }
 
 #[async_trait]
@@ -57,5 +60,12 @@ pub enum Activity {
     QuestionAnswered { question_id: Uuid, correct: bool },
     EssaySubmitted { essay_id: Uuid },
     TrailCompleted { trail_id: Uuid },
+}
+
+#[async_trait]
+pub trait ReadingContentRepository: Send + Sync {
+    async fn find_by_id(&self, id: Uuid) -> Result<Option<ReadingContent>>;
+    async fn list_all(&self) -> Result<Vec<ReadingContent>>;
+    async fn list_by_subject(&self, subject: Subject) -> Result<Vec<ReadingContent>>;
 }
 

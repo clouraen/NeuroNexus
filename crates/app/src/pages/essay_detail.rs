@@ -53,6 +53,30 @@ pub fn EssayDetail(id: String) -> Element {
                                 }
                             }
                         }
+                        // Botão de avaliação
+                        if e.status != EssayStatus::Corrigida {
+                            div {
+                                class: "evaluation-actions",
+                                button {
+                                    class: "neon-button",
+                                    disabled: is_evaluating(),
+                                    onclick: evaluate_essay,
+                                    if is_evaluating() {
+                                        "Avaliando..."
+                                    } else {
+                                        "✨ Avaliar Redação com IA"
+                                    }
+                                }
+                            }
+                        }
+                        // Mensagem de erro
+                        if let Some(error) = evaluation_error() {
+                            div {
+                                class: "error-message",
+                                style: "color: #ff4444; margin-top: 10px;",
+                                {error}
+                            }
+                        }
                     }
                     div {
                         class: "essay-content",
@@ -68,9 +92,10 @@ pub fn EssayDetail(id: String) -> Element {
                         div {
                             class: "essay-feedback",
                             h3 {
-                                "Feedback:"
+                                "Feedback Geral:"
                             }
                             p {
+                                style: "white-space: pre-wrap;",
                                 {feedback.clone()}
                             }
                         }
@@ -84,13 +109,53 @@ pub fn EssayDetail(id: String) -> Element {
                             for (criterion, score) in rubric.scores.iter() {
                                 div {
                                     class: "rubric-item",
-                                    span {
-                                        class: "criterion-name",
-                                        {format!("{}:", criterion)}
+                                    style: "margin: 15px 0; padding: 15px; background: rgba(0, 255, 255, 0.1); border-left: 3px solid #00ffff;",
+                                    div {
+                                        style: "display: flex; justify-content: space-between; margin-bottom: 10px;",
+                                        span {
+                                            class: "criterion-name",
+                                            style: "font-weight: bold; color: #00ffff;",
+                                            {format!("Competência {}:", criterion)}
+                                        }
+                                        span {
+                                            class: "criterion-score",
+                                            style: "font-weight: bold; color: #ff00ff; font-size: 1.2em;",
+                                            {format!("{} pontos", score)}
+                                        }
                                     }
-                                    span {
-                                        class: "criterion-score",
-                                        {score.to_string()}
+                                    if let Some(detailed) = rubric.detailed_feedback.get(criterion) {
+                                        p {
+                                            style: "color: #cccccc; white-space: pre-wrap; margin-top: 5px;",
+                                            {detailed.clone()}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if let Some(corrections) = &e.corrections {
+                        if !corrections.is_empty() {
+                            div {
+                                class: "essay-corrections",
+                                h3 {
+                                    "Sugestões de Melhoria:"
+                                }
+                                for correction in corrections {
+                                    div {
+                                        class: "correction-item",
+                                        style: "margin: 10px 0; padding: 10px; background: rgba(255, 100, 100, 0.1); border-left: 3px solid #ff6464;",
+                                        p {
+                                            style: "color: #ff6464; font-weight: bold;",
+                                            {format!("Competência {}", correction.rubric_criterion)}
+                                        }
+                                        p {
+                                            style: "color: #cccccc;",
+                                            {correction.reason.clone()}
+                                        }
+                                        p {
+                                            style: "color: #aaaaaa; font-style: italic; margin-top: 5px;",
+                                            {correction.suggested_text.clone()}
+                                        }
                                     }
                                 }
                             }

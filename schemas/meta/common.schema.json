@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/meta/common",
+  "title": "Common Type Definitions",
+  "description": "Reusable type definitions and validation patterns used across all NeuroNexus schemas",
+  "$defs": {
+    "UUID": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "A universally unique identifier in standard UUID format (RFC 4122)",
+      "examples": [
+        "00000000-0000-0000-0000-000000000001",
+        "550e8400-e29b-41d4-a716-446655440000"
+      ]
+    },
+    "DateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$",
+      "description": "A date-time string in ISO 8601 format (RFC 3339)",
+      "examples": [
+        "2023-12-01T10:30:00Z",
+        "2023-12-01T10:30:00.123Z",
+        "2023-12-01T10:30:00-03:00"
+      ]
+    },
+    "PositiveInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "A non-negative integer value (0 or greater)",
+      "examples": [0, 1, 42, 1000]
+    },
+    "StrictlyPositiveInteger": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "A strictly positive integer value (1 or greater)",
+      "examples": [1, 42, 1000]
+    },
+    "NonEmptyString": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A string with at least one character",
+      "examples": ["a", "Hello World", "Some text content"]
+    },
+    "Email": {
+      "type": "string",
+      "format": "email",
+      "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
+      "description": "A valid email address",
+      "examples": [
+        "user@example.com",
+        "student@neuronexus.app"
+      ]
+    },
+    "PercentageScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "A percentage value between 0 and 100 inclusive",
+      "examples": [0, 50, 75, 100]
+    },
+    "URL": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://",
+      "description": "A valid HTTP or HTTPS URL",
+      "examples": [
+        "https://neuronexus.app",
+        "http://example.com/resource"
+      ]
+    },
+    "TagArray": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 50
+      },
+      "uniqueItems": true,
+      "description": "An array of unique tag strings for categorization",
+      "examples": [
+        ["algebra", "mathematics"],
+        ["history", "brazil", "colonial-period"]
+      ]
+    }
+  }
+}

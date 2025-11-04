@@ -7,6 +7,7 @@ use domain::{
     question::{Question, Subject, Difficulty},
     user::{UserProfile, UserSettings, StudyProgress},
     knowledge_trail::KnowledgeTrail,
+    reading_content::ReadingContent,
     traits::*,
 };
 use shared::Result;
@@ -203,6 +204,30 @@ impl KnowledgeTrailRepository for InMemoryKnowledgeTrailRepository {
         }
         Ok(())
     }
+
+    async fn mark_module_complete(&self, trail_id: Uuid, module_id: Uuid, _user_id: Uuid) -> Result<()> {
+        let mut trails = self.trails.write().await;
+        if let Some(trail) = trails.get_mut(&trail_id) {
+            if let Some(module) = trail.modules.iter_mut().find(|m| m.id == module_id) {
+                module.completed = true;
+            }
+            // Recalculate progress
+            let completed_count = trail.modules.iter().filter(|m| m.completed).count();
+            let total_count = trail.modules.len();
+            trail.progress = if total_count > 0 {
+                ((completed_count as f64 / total_count as f64) * 100.0) as u8
+            } else {
+                0
+            };
+        }
+        Ok(())
+    }
+
+    async fn update(&self, trail: KnowledgeTrail) -> Result<()> {
+        let mut trails = self.trails.write().await;
+        trails.insert(trail.id, trail);
+        Ok(())
+    }
 }
 
 pub struct InMemoryUserRepository {
@@ -309,6 +334,47 @@ impl ProgressRepository for InMemoryProgressRepository {
         });
         user_progress.study_streak = streak;
         Ok(())
+    }
+}
+
+pub struct InMemoryReadingContentRepository {
+    readings: Arc<RwLock<HashMap<Uuid, ReadingContent>>>,
+}
+
+impl InMemoryReadingContentRepository {
+    pub fn new() -> Self {
+        Self {
+            readings: Arc::new(RwLock::new(HashMap::new())),
+        }
+    }
+
+    /// Helper method to insert reading content directly (used by seeders)
+    pub async fn insert(&self, reading: ReadingContent) -> Result<()> {
+        let mut readings = self.readings.write().await;
+        readings.insert(reading.id, reading);
+        Ok(())
+    }
+}
+
+#[async_trait::async_trait]
+impl ReadingContentRepository for InMemoryReadingContentRepository {
+    async fn find_by_id(&self, id: Uuid) -> Result<Option<ReadingContent>> {
+        let readings = self.readings.read().await;
+        Ok(readings.get(&id).cloned())
+    }
+
+    async fn list_all(&self) -> Result<Vec<ReadingContent>> {
+        let readings = self.readings.read().await;
+        Ok(readings.values().cloned().collect())
+    }
+
+    async fn list_by_subject(&self, subject: Subject) -> Result<Vec<ReadingContent>> {
+        let readings = self.readings.read().await;
+        Ok(readings
+            .values()
+            .filter(|r| r.subject == subject)
+            .cloned()
+            .collect())
     }
 }
 

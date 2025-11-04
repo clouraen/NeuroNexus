@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://neuronexus.app/schemas/enums/difficulty",
+  "title": "Difficulty Level Enumeration",
+  "description": "Classification of content difficulty levels used throughout the NeuroNexus platform for questions, trails, and learning materials.",
+  "type": "string",
+  "enum": [
+    "Facil",
+    "Medio",
+    "Dificil"
+  ],
+  "examples": [
+    "Facil",
+    "Medio",
+    "Dificil"
+  ],
+  "$defs": {
+    "DifficultyDisplayNames": {
+      "type": "object",
+      "description": "Human-readable display names for each difficulty level",
+      "properties": {
+        "Facil": {
+          "const": "Fácil",
+          "description": "Easy difficulty level - suitable for beginners or introductory content"
+        },
+        "Medio": {
+          "const": "Médio",
+          "description": "Medium difficulty level - suitable for intermediate learners"
+        },
+        "Dificil": {
+          "const": "Difícil",
+          "description": "Hard difficulty level - suitable for advanced learners or complex topics"
+        }
+      }
+    },
+    "DifficultyMetadata": {
+      "type": "object",
+      "description": "Additional metadata associated with difficulty levels",
+      "properties": {
+        "level": {
+          "$ref": "#"
+        },
+        "numeric_value": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3,
+          "description": "Numeric representation: 1=Facil, 2=Medio, 3=Dificil"
+        },
+        "color_code": {
+          "type": "string",
+          "description": "Suggested color code for UI representation",
+          "enum": ["#10b981", "#f59e0b", "#ef4444"]
+        }
+      },
+      "examples": [
+        {
+          "level": "Facil",
+          "numeric_value": 1,
+          "color_code": "#10b981"
+        },
+        {
+          "level": "Medio",
+          "numeric_value": 2,
+          "color_code": "#f59e0b"
+        },
+        {
+          "level": "Dificil",
+          "numeric_value": 3,
+          "color_code": "#ef4444"
+        }
+      ]
+    }
+  }
+}
